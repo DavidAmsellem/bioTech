@@ -1,0 +1,54 @@
+/* Footer styles */
+.footer {
+  background-color: var(--text-dark);
+  color: var(--white);
+  padding: 2rem 0;
+}
+
+.footer .bi {
+  font-size: 1.5rem;
+  transition: var(--transition);
+}
+
+.footer .text-light {
+  opacity: 0.8;
+  transition: var(--transition);
+}
+
+.footer a:hover .bi,
+.footer a:hover .text-light {
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
+.footer p {
+  margin-bottom: 0;
+}
+
+/* Social links */
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-links a {
+  color: var(--white);
+  opacity: 0.8;
+  transition: var(--transition);
+}
+
+.social-links a:hover {
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+  .footer {
+    text-align: center;
+  }
+  
+  .social-links {
+    justify-content: center;
+    margin-top: 1rem;
+  }
+}

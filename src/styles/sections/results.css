@@ -1,0 +1,56 @@
+.results {
+  padding: 5rem 0;
+  position: relative;
+  color: var(--white);
+}
+
+.results::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.results .container {
+  position: relative;
+  z-index: 2;
+}
+
+.results h2 {
+  font-weight: 700;
+  margin-bottom: 3rem;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+/* Estilos específicos para parallax */
+.results-parallax {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .results {
+    padding: 4rem 0;
+  }
+  
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .results-parallax {
+    min-height: auto;
+  }
+}

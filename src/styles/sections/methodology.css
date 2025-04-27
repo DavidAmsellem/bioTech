@@ -1,0 +1,53 @@
+.methodology {
+  padding: 5rem 0;
+  position: relative;
+}
+
+.methodology::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.methodology .container {
+  position: relative;
+  z-index: 2;
+}
+
+.methodology h2 {
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 3rem;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.methodology-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.methodology .method-card {
+  transition: var(--transition);
+  height: 100%;
+}
+
+.methodology .method-card:hover {
+  transform: translateY(-10px);
+}
+
+@media (max-width: 768px) {
+  .methodology {
+    padding: 4rem 0;
+  }
+  
+  .methodology-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,57 @@
+:root {
+  --primary-color: #2c8b46;
+  --primary-hover: #236e38;
+  --text-dark: #333;
+  --text-light: #666;
+  --white: #fff;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 15px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, 'Open Sans', sans-serif;
+  line-height: 1.6;
+  color: var(--text-dark);
+  padding-top: 76px;
+}
+
+/* Utilidades generales */
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+/* Ajustes generales de sección */
+section {
+  scroll-margin-top: 76px;
+  position: relative;
+}
+
+/* Ajustes generales de contenedor */
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Media queries globales */
+@media (max-width: 768px) {
+  section {
+    padding: 4rem 0;
+  }
+}

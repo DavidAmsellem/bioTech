@@ -1,0 +1,94 @@
+/* Estilos base para cards */
+.card {
+  transition: var(--transition);
+  height: 100%;
+  padding: 1.5rem;
+}
+
+/* Stat cards */
+.stat-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  border: none;
+  color: var(--text-dark);
+  text-shadow: none;
+  padding: 2rem;
+  height: 100%;
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
+  text-align: center;
+}
+
+.stat-card:hover {
+  transform: translateY(-10px);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.stat-card h3 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+  color: var(--text-light);
+  margin: 0;
+}
+
+/* Team cards */
+.team-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  border: none;
+  color: var(--text-dark);
+  text-shadow: none;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+}
+
+.team-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.team-icon {
+  font-size: 2.5rem;
+  color: var(--white);
+}
+
+.team-card:hover .team-icon-wrapper {
+  transform: rotate(360deg);
+}
+
+/* Method cards */
+.method-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  border: none;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+
+.feature-icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}

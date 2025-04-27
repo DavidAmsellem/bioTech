@@ -1,0 +1,42 @@
+.about {
+  padding: 5rem 0;
+  background-color: var(--white);
+}
+
+.about h2 {
+  color: var(--text-dark);
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.about p {
+  color: var(--text-light);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.about-image {
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.about-content {
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding: 3rem 0;
+  }
+  
+  .about-content {
+    padding: 1rem 0;
+  }
+  
+  .about-image {
+    margin-bottom: 2rem;
+  }
+}
