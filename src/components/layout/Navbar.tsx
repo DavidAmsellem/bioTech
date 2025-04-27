@@ -87,11 +87,6 @@ export const Navbar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a className={`nav-link ${activeSection === 'galeria' ? 'active' : ''}`} href="#galeria">
-                <strong>Galería</strong>
-              </a>
-            </li>
-            <li className="nav-item">
               <a className={`nav-link ${activeSection === 'contacto' ? 'active' : ''}`} href="#contacto">
                 <strong>Contacto</strong>
               </a>

@@ -126,31 +126,6 @@ section::before {
   );
 }
 
-/* Hero section */
-.hero {
-  min-height: 100vh;
-  position: relative;
-  display: flex;
-  align-items: center;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 1;
-}
-
-.hero .container {
-  position: relative;
-  z-index: 2;
-}
 
 /* Cards y elementos comunes */
 .card {

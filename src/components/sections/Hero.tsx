@@ -1,36 +1,52 @@
-import { Parallax } from 'react-parallax';
-
-const heroImage = '/images/hero-bg.png';
+import { useTypewriter, Cursor } from 'react-simple-typewriter';
 
 export const Hero = () => {
+  const [text] = useTypewriter({
+    words: [
+      'Remediación de Cultivos',
+      'Innovación Sostenible',
+      'Biotecnología Ambiental',
+      'Recuperación de Suelos'
+    ],
+    loop: true,
+    delaySpeed: 2000,
+    deleteSpeed: 40,
+    typeSpeed: 70,
+  });
+
   return (
-    <Parallax
-      blur={0}
-      bgImage={heroImage}
-      bgImageAlt="Cultivos sostenibles"
-      strength={200}
-    >
-      <section className="hero" id="inicio">
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-lg-6" data-aos="fade-right">
-              <h1 className="display-4 mb-4">Proyecto de Remediación de Cultivos</h1>
-              <p className="lead mb-4">Innovando en la recuperación y sostenibilidad de suelos agrícolas</p>
-              <div className="d-flex gap-3">
-                <a href="#proyecto" className="btn btn-primary btn-lg btn-icon">
-                  Conócenos <i className="bi bi-arrow-right"></i>
-                </a>
-                <a href="#contacto" className="btn btn-outline-primary btn-lg">
-                  Contactar
-                </a>
-              </div>
-            </div>
-            <div className="col-lg-6" data-aos="fade-left" data-aos-delay="200">
-              {/* Contenido del hero */}
+    <section className="hero" id="inicio">
+      <div className="video-background">
+        <iframe
+          src="https://player.vimeo.com/video/1039408593?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1#t=10s"
+          frameBorder="0"
+          allow="autoplay; fullscreen"
+          title="Background video"
+        ></iframe>
+      </div>
+      <div className="overlay"></div>
+      <div className="container">
+        <div className="row align-items-center justify-content-center">
+          <div className="col-lg-8 text-center" data-aos="fade-up">
+            <h1 className="mb-3">
+              Proyecto de{' '}
+              <span style={{ fontWeight: 700, color: 'var(--text-dark)' }}>
+                {text}
+              </span>
+              <Cursor cursorStyle="_" />
+            </h1>
+            <p className="lead mb-4">Innovando en la recuperación y sostenibilidad de suelos agrícolas</p>
+            <div className="d-flex gap-3 justify-content-center">
+              <a href="#proyecto" className="btn btn-primary btn-icon">
+                Conócenos <i className="bi bi-arrow-right"></i>
+              </a>
+              <a href="#contacto" className="btn btn-outline-primary">
+                Contactar
+              </a>
             </div>
           </div>
         </div>
-      </section>
-    </Parallax>
+      </div>
+    </section>
   );
 };

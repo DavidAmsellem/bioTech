@@ -19,7 +19,7 @@ declare module 'react-parallax' {
 }
 
 interface Window {
-  bootstrap: any;
+  bootstrap: { [key: string]: unknown };
 }
 
-declare var bootstrap: any;
+declare let bootstrap: { [key: string]: unknown };

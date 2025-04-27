@@ -1,48 +1,48 @@
 :root {
-  /* Paleta de colores principal */
-  --primary-color: #4CAF50;
-  --primary-light: #81C784;
-  --primary-dark: #388E3C;
+  /* Paleta de colores pastel */
+  --primary-color: #98D8AA;
+  --primary-light: #B8E0C2;
+  --primary-dark: #78B790;
   
   /* Colores secundarios */
-  --secondary-color: #42A5F5;
-  --secondary-light: #90CAF9;
-  --secondary-dark: #1976D2;
+  --secondary-color: #A1C2F1;
+  --secondary-light: #C2D8F7;
+  --secondary-dark: #7FA3D7;
   
   /* Colores de acento */
-  --accent-color: #FFB74D;
-  --accent-light: #FFE0B2;
-  --accent-dark: #F57C00;
+  --accent-color: #FFB6B6;
+  --accent-light: #FFD3D3;
+  --accent-dark: #FF9494;
 
   /* Fondos suaves */
   --background-main: #F8F9FA;
-  --background-alt: #E8F5E9;
+  --background-alt: #F0F7F1;
   --background-card: #FFFFFF;
-  --background-dark: #2C3E50;
+  --background-dark: #4A5B6B;
   
   /* Textos */
-  --text-dark: #2C3E50;
-  --text-medium: #546E7A;
-  --text-light: #78909C;
+  --text-dark: #5C6B73;
+  --text-medium: #8596A0;
+  --text-light: #A5B5BE;
   --text-white: #FFFFFF;
   
   /* Gradientes */
-  --gradient-primary: linear-gradient(135deg, #4CAF50 0%, #81C784 100%);
-  --gradient-secondary: linear-gradient(135deg, #42A5F5 0%, #90CAF9 100%);
-  --gradient-accent: linear-gradient(135deg, #FFB74D 0%, #FFE0B2 100%);
-  --gradient-dark: linear-gradient(135deg, #2C3E50 0%, #3E5871 100%);
+  --gradient-primary: linear-gradient(135deg, #98D8AA 0%, #B8E0C2 100%);
+  --gradient-secondary: linear-gradient(135deg, #A1C2F1 0%, #C2D8F7 100%);
+  --gradient-accent: linear-gradient(135deg, #FFB6B6 0%, #FFD3D3 100%);
+  --gradient-dark: linear-gradient(135deg, #4A5B6B 0%, #5C6B73 100%);
   
-  /* Sombras */
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-  --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
-  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-  --shadow-hover: 0 15px 30px rgba(0,0,0,0.15);
+  /* Sombras más suaves */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.03);
+  --shadow-md: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-lg: 0 4px 6px rgba(0,0,0,0.07);
+  --shadow-hover: 0 6px 8px rgba(0,0,0,0.08);
   
-  /* Bordes */
-  --border-radius-sm: 4px;
-  --border-radius-md: 8px;
-  --border-radius-lg: 16px;
-  --border-radius-xl: 24px;
+  /* Bordes más pequeños y simples */
+  --border-radius-sm: 2px;
+  --border-radius-md: 4px;
+  --border-radius-lg: 8px;
+  --border-radius-xl: 12px;
   
   /* Transiciones */
   --transition-fast: 200ms ease;

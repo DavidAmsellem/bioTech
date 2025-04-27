@@ -1,0 +1,240 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700|Great+Vibes);
+
+.gallery {
+  background: var(--background-alt);
+  padding: var(--spacing-2xl) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.galeria-container {
+  margin: 2vh auto 0;
+  width: 80vw;
+  transform-style: preserve-3d;
+  position: relative;
+  min-height: 60vh;
+}
+
+.gallery .card {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: var(--shadow-md);
+  border-radius: var(--border-radius-md);
+  font-family: 'Lato', sans-serif;
+  overflow: hidden;
+}
+
+.gallery .una {
+  background-image: linear-gradient(rgba(152, 216, 170, 0.3), rgba(152, 216, 170, 0.3)), url('/images/tractor.jpg');
+}
+
+.gallery .dos {
+  background-image: linear-gradient(rgba(161, 194, 241, 0.3), rgba(161, 194, 241, 0.3)), url('/images/methodology-bg.png');
+}
+
+.gallery .tres {
+  background-image: linear-gradient(rgba(255, 182, 182, 0.3), rgba(255, 182, 182, 0.3)), url('/images/hero-bg.png');
+}
+
+.gallery h2 {
+  color: var(--text-dark);
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  font-size: 4vh;
+  font-weight: 400;
+  line-height: 8vh;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0;
+}
+
+.gallery h2 i {
+  font-size: 0.8em;
+  color: var(--primary-color);
+}
+
+.gallery .card p {
+  text-align: center;
+  color: var(--text-dark);
+  font-size: 2.5vh;
+  line-height: 1.5;
+  margin-top: 3vh;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: var(--border-radius-sm);
+  font-family: 'Lato', sans-serif;
+}
+
+.gallery .footer {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--primary-color);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  list-style-type: none;
+  border-top: 1px solid var(--primary-light);
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+#uno:checked ~ .una .footer,
+#dole:checked ~ .dos .footer,
+#tele:checked ~ .tres .footer {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.gallery .footer li {
+  flex: 1;
+  text-align: center;
+  padding: 1.5vh 0;
+  transition: var(--transition-normal);
+}
+
+.gallery .footer li:hover {
+  color: var(--primary-dark);
+  background: var(--primary-light);
+}
+
+.gallery .footer i {
+  font-size: 3vh;
+}
+
+.gallery input {
+  visibility: hidden;
+  position: absolute;
+}
+
+.gallery label {
+  background: rgba(152, 216, 170, 0.6);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-white);
+  font-size: 3vh;
+  height: 10vh;
+  width: 3vw;
+  cursor: pointer;
+  opacity: 0;
+  transition: var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-sm);
+}
+
+.otra + .otra,
+#uno:checked ~ .tres .afin,
+#dole:checked ~ .una .afin,
+#tele:checked ~ .dos .afin {
+  right: 1vh;
+}
+
+.otra:not(.otra + .otra) {
+  left: 1vh;
+}
+
+#uno:checked ~ .una .otra,
+#dole:checked ~ .dos .otra,
+#tele:checked ~ .tres .otra {
+  background: rgba(120, 183, 144, 0.6);
+  opacity: 0.6;
+}
+
+#uno:checked ~ .una .afin,
+#dole:checked ~ .dos .afin,
+#tele:checked ~ .tres .afin,
+:not(:checked) ~ .otra {
+  display: none;
+}
+
+.gallery .card:hover label {
+  opacity: 0.6;
+}
+
+.gallery .card:hover label + label {
+  animation-delay: .5s;
+}
+
+.gallery .card:hover label:hover {
+  opacity: 1;
+  width: 5vw;
+  background: var(--primary-color);
+}
+
+#uno:checked ~ .dos,
+#dole:checked ~ .tres,
+#tele:checked ~ .una {
+  animation: 1s fuera-izq;
+  animation-fill-mode: forwards;
+  transform-origin: center left;
+  z-index: 2;
+}
+
+#uno:checked ~ .tres,
+#dole:checked ~ .una,
+#tele:checked ~ .dos {
+  animation: 1.5s fuera-dch;
+  animation-fill-mode: forwards;
+  transform-origin: center right;
+  z-index: 2;
+}
+
+#uno:checked ~ .una,
+#dole:checked ~ .dos,
+#tele:checked ~ .tres {
+  animation: 2s central;
+  animation-fill-mode: forwards;
+  transform-origin: center center;
+  z-index: 3;
+}
+
+@keyframes fuera-izq {
+  0% {transform: scale(1) translatex(0%);} 
+  70% {transform: scale(.95) translatex(-100%);}
+  100% {transform: scale(.95) translatex(-5%);}
+}
+
+@keyframes fuera-dch {
+  0% {transform: scale(1) translatex(0%);}
+  70% {transform: scale(.95) translatex(100%);}
+  100% {transform: scale(.95) translatex(5%);}
+}
+
+@keyframes central {
+  0% {transform: scale(.9);z-index: 1;}
+  80% {transform: scale(.95);z-index: 3;}
+  100% {transform: scale(1);z-index: 3;}
+}
+
+@media (max-width: 768px) {
+  .galeria-container {
+    width: 95vw;
+  }
+
+  .gallery .card p {
+    font-size: 2vh;
+  }
+
+  .gallery h2 {
+    font-size: 3vh;
+  }
+
+  .gallery label {
+    width: 8vw;
+  }
+
+  .gallery .card:hover label:hover {
+    width: 12vw;
+  }
+}
