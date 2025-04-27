@@ -1,26 +1,27 @@
+/* Añadir al principio del archivo, antes de :root */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
 :root {
-  /* Paleta de colores pastel */
+  /* Paleta de colores modo claro */
   --primary-color: #98D8AA;
   --primary-light: #B8E0C2;
   --primary-dark: #78B790;
   
-  /* Colores secundarios */
   --secondary-color: #A1C2F1;
   --secondary-light: #C2D8F7;
   --secondary-dark: #7FA3D7;
   
-  /* Colores de acento */
   --accent-color: #FFB6B6;
   --accent-light: #FFD3D3;
   --accent-dark: #FF9494;
 
-  /* Fondos suaves */
   --background-main: #F8F9FA;
   --background-alt: #F0F7F1;
   --background-card: #FFFFFF;
   --background-dark: #4A5B6B;
   
-  /* Textos */
   --text-dark: #5C6B73;
   --text-medium: #8596A0;
   --text-light: #A5B5BE;
@@ -68,6 +69,55 @@
   --primary-rgb: 152, 216, 170;
   --secondary-rgb: 161, 194, 241;
   --accent-rgb: 255, 182, 182;
+}
+
+/* Tema oscuro */
+[data-theme='dark'] {
+  --primary-color: #78B790;
+  --primary-light: #98D8AA;
+  --primary-dark: #5A8B6E;
+  
+  --secondary-color: #7FA3D7;
+  --secondary-light: #A1C2F1;
+  --secondary-dark: #5A7EB3;
+  
+  --accent-color: #FF9494;
+  --accent-light: #FFB6B6;
+  --accent-dark: #FF7272;
+
+  --background-main: #1A1A1A;
+  --background-alt: #242424;
+  --background-card: #2A2A2A;
+  --background-dark: #333333;
+  
+  --text-dark: #E0E0E0;
+  --text-medium: #B0B0B0;
+  --text-light: #808080;
+  --text-white: #FFFFFF;
+
+  /* RGB values for dark theme */
+  --primary-rgb: 120, 183, 144;
+  --secondary-rgb: 127, 163, 215;
+  --accent-rgb: 255, 148, 148;
+
+  /* Ajustar gradientes para el tema oscuro */
+  --gradient-primary: linear-gradient(135deg, #78B790 0%, #5A8B6E 100%);
+  --gradient-secondary: linear-gradient(135deg, #7FA3D7 0%, #5A7EB3 100%);
+  --gradient-accent: linear-gradient(135deg, #FF9494 0%, #FF7272 100%);
+  --gradient-dark: linear-gradient(135deg, #333333 0%, #1A1A1A 100%);
+
+  /* Ajustar sombras para el tema oscuro */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.6);
+  --shadow-hover: 0 6px 8px rgba(0, 0, 0, 0.7);
+
+  /* Ajustar glassmorphism para el tema oscuro */
+  --glass-background: rgba(42, 42, 42, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  --glass-blur: blur(16px);
+  --glass-hover-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.6);
 }
 
 /* Reset y estilos base */
@@ -140,6 +190,43 @@ body {
 .btn-outline:hover {
   background: var(--primary-color);
   color: var(--text-white);
+}
+
+/* Estilos para el botón de toggle */
+.theme-toggle {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--text-dark);
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-left: 1rem;
+}
+
+.theme-toggle:hover {
+  background: var(--primary-color);
+  color: var(--background-card);
+  transform: rotate(180deg);
+}
+
+.theme-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+.theme-toggle i {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-toggle:hover i {
+  transform: scale(1.1);
 }
 
 /* Utilidades de sección */

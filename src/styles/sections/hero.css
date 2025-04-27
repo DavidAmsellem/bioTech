@@ -6,6 +6,7 @@
   overflow: hidden;
   padding: var(--spacing-2xl) 0;
   margin-bottom: 0;
+  top: -20px; /* Adjusted to remove the gap */
 }
 
 .video-background {

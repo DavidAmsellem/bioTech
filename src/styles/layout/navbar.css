@@ -1,6 +1,6 @@
 .navbar {
   transition: var(--transition-normal);
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--background-main, rgba(255, 255, 255, 0.8));
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -14,7 +14,7 @@
 }
 
 .navbar-scrolled {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--background-main, rgba(255, 255, 255, 0.9));
   box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
   border-color: rgba(255, 255, 255, 0.3);
 }
@@ -46,7 +46,7 @@
   transition: var(--transition-normal);
   position: relative;
   border-radius: var(--border-radius-sm);
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--background-nav-item, rgba(255, 255, 255, 0.1));
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
 }

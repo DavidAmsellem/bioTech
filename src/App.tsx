@@ -8,10 +8,13 @@ import { Methodology } from './components/sections/Methodology'
 import { Results } from './components/sections/Results'
 import { Team } from './components/sections/Team'
 import { Contact } from './components/sections/Contact'
+import { Analytics } from './components/analytics/Analytics'
+import { ThemeProvider } from './context/ThemeContext'
 
 function App() {
   return (
-    <>
+    <ThemeProvider>
+      <Analytics />
       <Navbar />
       <main>
         <Hero />
@@ -22,7 +25,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </ThemeProvider>
   )
 }
 

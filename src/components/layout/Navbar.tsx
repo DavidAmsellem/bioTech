@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { ThemeToggle } from '../ui/ThemeToggle';
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -77,6 +78,11 @@ export const Navbar = () => {
               </a>
             </li>
             <li className="nav-item">
+              <a className={`nav-link ${activeSection === 'fases' ? 'active' : ''}`} href="#fases">
+                <strong>Fases</strong>
+              </a>
+            </li>
+            <li className="nav-item">
               <a className={`nav-link ${activeSection === 'metodologia' ? 'active' : ''}`} href="#metodologia">
                 <strong>Metodología</strong>
               </a>
@@ -92,6 +98,7 @@ export const Navbar = () => {
               </a>
             </li>
           </ul>
+          <ThemeToggle />
         </div>
       </div>
     </nav>
