@@ -1,0 +1,160 @@
+.growing-plant-container {
+  position: fixed;
+  left: 2rem;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.growing-plant {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 0;
+  background: linear-gradient(to top, var(--primary-dark), var(--primary-color));
+  transition: height 0.1s ease-out;
+}
+
+.vine {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    var(--primary-light) 10px,
+    var(--primary-light) 12px
+  );
+  opacity: 0.3;
+}
+
+.branch {
+  position: absolute;
+  width: 60px;
+  height: 2px;
+  background: var(--primary-color);
+  transform-origin: left center;
+  opacity: 0;
+  transition: opacity 0.3s ease-out, transform 0.5s ease-out;
+}
+
+.branch-0 {
+  top: 30%;
+  transform: rotate(45deg) scaleX(0);
+}
+
+.branch-1 {
+  top: 60%;
+  right: 0;
+  transform: rotate(-45deg) scaleX(0);
+}
+
+.branch-2 {
+  top: 80%;
+  transform: rotate(45deg) scaleX(0);
+}
+
+.growing-plant[style*="height: 30"] .branch-0 {
+  opacity: 1;
+  transform: rotate(45deg) scaleX(1);
+}
+
+.growing-plant[style*="height: 60"] .branch-1 {
+  opacity: 1;
+  transform: rotate(-45deg) scaleX(1);
+}
+
+.growing-plant[style*="height: 80"] .branch-2 {
+  opacity: 1;
+  transform: rotate(45deg) scaleX(1);
+}
+
+.branch-vine {
+  width: 100%;
+  height: 2px;
+}
+
+.leaves-container {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+}
+
+.leaf {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  color: var(--primary-color);
+  opacity: 0;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.leaf-0 {
+  left: 0;
+  transform: rotate(-45deg) scale(0);
+}
+
+.leaf-1 {
+  left: 50%;
+  transform: translateX(-50%) rotate(0) scale(0);
+}
+
+.leaf-2 {
+  right: 0;
+  transform: rotate(45deg) scale(0);
+}
+
+.branch .leaf {
+  animation: leafGrow 0.5s ease-out forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+.leaf-top {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg);
+  width: 24px;
+  height: 24px;
+  color: var(--primary-color);
+}
+
+@keyframes leafGrow {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--rotation, 0deg)) scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(var(--rotation, 0deg)) scale(1);
+  }
+}
+
+.branch:nth-child(1) .leaf { --delay: 0.3s; }
+.branch:nth-child(2) .leaf { --delay: 0.6s; }
+.branch:nth-child(3) .leaf { --delay: 0.9s; }
+
+.leaf-0 { --rotation: -45deg; }
+.leaf-1 { --rotation: 0deg; }
+.leaf-2 { --rotation: 45deg; }
+
+@media (max-width: 768px) {
+  .growing-plant-container {
+    left: 0.5rem;
+    width: 80px;
+  }
+  
+  .branch {
+    width: 40px;
+  }
+}

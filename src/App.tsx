@@ -10,12 +10,14 @@ import { Team } from './components/sections/Team'
 import { Contact } from './components/sections/Contact'
 import { Analytics } from './components/analytics/Analytics'
 import { ThemeProvider } from './context/ThemeContext'
+import { GrowingPlant } from './components/layout/GrowingPlant'
 
 function App() {
   return (
     <ThemeProvider>
       <Analytics />
       <Navbar />
+      <GrowingPlant />
       <main>
         <Hero />
         <About />

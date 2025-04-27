@@ -1,5 +1,6 @@
 import { useTypewriter, Cursor } from 'react-simple-typewriter';
 
+
 export const Hero = () => {
   const [text] = useTypewriter({
     words: [
@@ -15,7 +16,7 @@ export const Hero = () => {
   });
 
   return (
-    <section className="hero" id="inicio">
+    <section id="hero" className="hero">
       <div className="video-background">
         <iframe
           src="https://player.vimeo.com/video/1039408593?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1#t=10s"
