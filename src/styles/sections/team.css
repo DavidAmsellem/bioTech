@@ -1,7 +1,8 @@
 .team {
-  padding: 5rem 0;
+  background: linear-gradient(135deg, var(--background-card) 0%, var(--background-alt) 100%);
+  padding: var(--spacing-2xl) 0;
   position: relative;
-  color: var(--white);
+  overflow: hidden;
 }
 
 .team::before {
@@ -9,10 +10,10 @@
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 0% 0%, var(--primary-light) 0%, transparent 50%);
+  opacity: 0.05;
 }
 
 .team .container {
@@ -21,10 +22,17 @@
 }
 
 .team h2 {
+  color: var(--text-dark);
   font-weight: 700;
-  margin-bottom: 3rem;
   text-align: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.team h2 i {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .team-grid {
@@ -52,14 +60,119 @@
 /* Estilos específicos para parallax */
 .team-parallax {
   position: relative;
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
 }
 
+.team-card {
+  background: var(--background-card);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(76, 175, 80, 0.1);
+  transition: all 0.3s ease;
+}
+
+.team-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: 0.3s ease;
+  z-index: 1;
+}
+
+.team-card:hover::before {
+  opacity: 0.05;
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-hover);
+}
+
+.team-card h5 {
+  color: var(--text-dark);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: var(--spacing-md) 0 var(--spacing-xs);
+  position: relative;
+  z-index: 2;
+}
+
+.team-card p {
+  color: var(--text-medium);
+  margin-bottom: var(--spacing-md);
+  position: relative;
+  z-index: 2;
+}
+
+.team-icon-wrapper {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto var(--spacing-lg);
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.team-card:hover .team-icon-wrapper {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(76, 175, 80, 0.3);
+}
+
+.team-icon {
+  font-size: 3rem;
+  color: var(--text-white);
+  transition: all 0.3s ease;
+}
+
+.team-card:hover .team-icon {
+  transform: rotate(360deg);
+}
+
+.team-social {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  position: relative;
+  z-index: 2;
+}
+
+.team-social a {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: var(--background-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-medium);
+  transition: all 0.3s ease;
+}
+
+.team-social a:hover {
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  transform: translateY(-3px);
+}
+
 @media (max-width: 768px) {
   .team {
-    padding: 4rem 0;
+    padding: var(--spacing-xl) 0;
   }
   
   .team-grid {
@@ -68,5 +181,19 @@
   
   .team-parallax {
     min-height: auto;
+    padding: 4rem 0;
+  }
+  
+  .team-card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .team-icon-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .team-icon {
+    font-size: 2.5rem;
   }
 }

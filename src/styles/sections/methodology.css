@@ -1,6 +1,8 @@
 .methodology {
-  padding: 5rem 0;
+  background: var(--background-card);
+  padding: var(--spacing-2xl) 0;
   position: relative;
+  overflow: hidden;
 }
 
 .methodology::before {
@@ -8,10 +10,10 @@
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 10% 20%, var(--secondary-light) 0%, transparent 80%);
+  opacity: 0.05;
 }
 
 .methodology .container {
@@ -20,11 +22,18 @@
 }
 
 .methodology h2 {
-  color: var(--white);
+  color: var(--text-dark);
   font-weight: 700;
-  margin-bottom: 3rem;
   text-align: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: var(--spacing-2xl);
+  position: relative;
+}
+
+.methodology h2 i {
+  background: var(--gradient-secondary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .methodology-grid {
@@ -33,18 +42,47 @@
   gap: 2rem;
 }
 
-.methodology .method-card {
-  transition: var(--transition);
+.method-card {
   height: 100%;
+  background: var(--background-main);
+  border: 1px solid rgba(66, 165, 245, 0.1);
+  border-radius: 15px;
+  padding: 2rem;
+  transition: var(--transition);
+  box-shadow: var(--shadow-md);
 }
 
-.methodology .method-card:hover {
+.method-card:hover {
   transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--secondary-light);
+}
+
+.method-card .feature-icon {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  transition: var(--transition-normal);
+}
+
+.method-card:hover .feature-icon {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.method-card h5 {
+  color: var(--text-dark);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.method-card p {
+  color: var(--text-light);
+  margin-bottom: 0;
 }
 
 @media (max-width: 768px) {
   .methodology {
-    padding: 4rem 0;
+    padding: var(--spacing-xl) 0;
   }
   
   .methodology-grid {

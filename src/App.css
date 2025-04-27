@@ -16,6 +16,7 @@
 
 /* Importar estilos de componentes */
 @import './styles/components/cards.css';
+@import './styles/components/buttons.css';
 
 /* Estilos base */
 html {
@@ -105,6 +106,24 @@ body {
 /* Secciones generales */
 section {
   scroll-margin-top: 76px;
+  position: relative;
+  padding: 5rem 0;
+  overflow: hidden;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--primary-light),
+    transparent
+  );
 }
 
 /* Hero section */
@@ -277,6 +296,14 @@ footer .bi:hover {
   .team::before {
     background: rgba(0, 0, 0, 0.6);
   }
+  
+  section {
+    padding: 3rem 0;
+  }
+
+  .section-title h2 {
+    font-size: 2rem;
+  }
 }
 
 /* Estilos para secciones con parallax */
@@ -323,4 +350,11 @@ footer .bi:hover {
   border: none;
   color: #333;
   text-shadow: none;
+}
+
+/* Estilos de botones */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
 }

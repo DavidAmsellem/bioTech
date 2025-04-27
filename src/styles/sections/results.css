@@ -1,6 +1,8 @@
 .results {
-  padding: 5rem 0;
+  background: var(--background-alt);
+  padding: var(--spacing-2xl) 0;
   position: relative;
+  overflow: hidden;
   color: var(--white);
 }
 
@@ -9,10 +11,28 @@
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 90% 90%, var(--accent-light) 0%, transparent 60%);
+  opacity: 0.1;
+}
+
+.results::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--primary-light) 0,
+    var(--primary-light) 1px,
+    transparent 0,
+    transparent 50%
+  );
+  background-size: 20px 20px;
+  opacity: 0.03;
 }
 
 .results .container {
@@ -21,10 +41,19 @@
 }
 
 .results h2 {
+  color: var(--text-dark);
   font-weight: 700;
-  margin-bottom: 3rem;
   text-align: center;
+  margin-bottom: var(--spacing-2xl);
+  position: relative;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.results h2 i {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .results-grid {
@@ -33,24 +62,54 @@
   gap: 2rem;
 }
 
-/* Estilos específicos para parallax */
-.results-parallax {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
+.results .stat-card {
+  height: 100%;
+  background: var(--background-card);
+  border-radius: 15px;
+  padding: 2rem;
+  transition: transform 0.3s ease;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 183, 77, 0.1);
+}
+
+.results .stat-card:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.results .stat-icon {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.results .stat-card h3 {
+  color: var(--accent-dark);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-xs);
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.results .stat-card p {
+  color: var(--text-medium);
+  font-size: 1.1rem;
+  margin: 0;
 }
 
 @media (max-width: 768px) {
   .results {
-    padding: 4rem 0;
+    padding: var(--spacing-xl) 0;
   }
   
   .results-grid {
     grid-template-columns: 1fr;
-  }
-  
-  .results-parallax {
-    min-height: auto;
   }
 }

@@ -1,3 +1,42 @@
+/* Animaciones básicas */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 /* Animaciones de iconos */
 @keyframes rotate {
   from { transform: rotate(0deg); }
@@ -21,38 +60,132 @@
   20%, 40%, 60%, 80% { transform: translateX(2px); }
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes glow {
+  0%, 100% { filter: brightness(100%); }
+  50% { filter: brightness(120%); }
+}
+
 /* Clases de animación */
-.rotate-icon {
-  animation: rotate 4s linear infinite;
-}
+.fade-in { animation: fadeIn 0.6s ease forwards; }
+.slide-up { animation: slideUp 0.6s ease forwards; }
+.slide-down { animation: slideDown 0.6s ease forwards; }
+.scale-up { animation: scaleUp 0.6s ease forwards; }
+.rotate-icon { animation: rotate 4s linear infinite; }
+.bounce-icon { animation: bounce 2s ease infinite; }
+.pulse-icon { animation: pulse 2s ease infinite; }
+.shake-icon { animation: shake 3s ease infinite; }
+.float-icon { animation: float 3s ease-in-out infinite; }
+.glow-icon { animation: glow 2s ease-in-out infinite; }
 
-.bounce-icon {
-  animation: bounce 2s ease infinite;
-}
-
-.pulse-icon {
-  animation: pulse 2s ease infinite;
-}
-
-.shake-icon {
-  animation: shake 3s ease infinite;
-}
-
-/* Animaciones para hover */
+/* Clases de hover */
 .hover-lift {
-  transition: var(--transition);
+  transition: var(--transition-normal);
 }
 
 .hover-lift:hover {
   transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.hover-scale {
+  transition: var(--transition-normal);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-glow {
+  transition: var(--transition-normal);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 15px var(--primary-light);
+}
+
+.hover-rotate {
+  transition: var(--transition-normal);
+}
+
+.hover-rotate:hover {
+  transform: rotate(5deg);
 }
 
 /* Animaciones para cards */
 .card-hover {
-  transition: var(--transition);
+  transition: var(--transition-normal);
+  transform-origin: center;
 }
 
 .card-hover:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.02);
   box-shadow: var(--shadow-lg);
+}
+
+/* Animaciones para botones */
+.btn-hover {
+  transition: var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: var(--transition-normal);
+}
+
+.btn-hover:hover::after {
+  left: 100%;
+}
+
+/* Animaciones para imágenes */
+.img-hover {
+  transition: var(--transition-normal);
+  filter: brightness(95%);
+}
+
+.img-hover:hover {
+  filter: brightness(105%);
+  transform: scale(1.05);
+}
+
+/* Animaciones para enlaces */
+.link-hover {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+
+.link-hover::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: var(--primary-color);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.link-hover:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }

@@ -1,13 +1,61 @@
 :root {
-  --primary-color: #2c8b46;
-  --primary-hover: #236e38;
-  --text-dark: #333;
-  --text-light: #666;
-  --white: #fff;
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 4px 15px rgba(0, 0, 0, 0.1);
-  --transition: all 0.3s ease;
+  /* Paleta de colores principal */
+  --primary-color: #4CAF50;
+  --primary-light: #81C784;
+  --primary-dark: #388E3C;
+  
+  /* Colores secundarios */
+  --secondary-color: #42A5F5;
+  --secondary-light: #90CAF9;
+  --secondary-dark: #1976D2;
+  
+  /* Colores de acento */
+  --accent-color: #FFB74D;
+  --accent-light: #FFE0B2;
+  --accent-dark: #F57C00;
+
+  /* Fondos suaves */
+  --background-main: #F8F9FA;
+  --background-alt: #E8F5E9;
+  --background-card: #FFFFFF;
+  --background-dark: #2C3E50;
+  
+  /* Textos */
+  --text-dark: #2C3E50;
+  --text-medium: #546E7A;
+  --text-light: #78909C;
+  --text-white: #FFFFFF;
+  
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, #4CAF50 0%, #81C784 100%);
+  --gradient-secondary: linear-gradient(135deg, #42A5F5 0%, #90CAF9 100%);
+  --gradient-accent: linear-gradient(135deg, #FFB74D 0%, #FFE0B2 100%);
+  --gradient-dark: linear-gradient(135deg, #2C3E50 0%, #3E5871 100%);
+  
+  /* Sombras */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+  --shadow-hover: 0 15px 30px rgba(0,0,0,0.15);
+  
+  /* Bordes */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 24px;
+  
+  /* Transiciones */
+  --transition-fast: 200ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  /* Espaciado */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
 }
 
 /* Reset y estilos base */
@@ -19,31 +67,92 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
-  font-family: 'Segoe UI', Roboto, 'Open Sans', sans-serif;
-  line-height: 1.6;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--background-main);
   color: var(--text-dark);
+  line-height: 1.6;
   padding-top: 76px;
 }
 
-/* Utilidades generales */
-.text-primary {
-  color: var(--primary-color) !important;
+/* Utilidades de texto */
+.text-gradient-primary {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.bg-primary {
-  background-color: var(--primary-color) !important;
+.text-gradient-secondary {
+  background: var(--gradient-secondary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-/* Ajustes generales de sección */
+/* Utilidades de botones */
+.btn {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  transition: var(--transition-normal);
+  font-weight: var(--font-weight-medium);
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  border: none;
+  color: var(--text-white);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background: var(--gradient-secondary);
+  border: none;
+  color: var(--text-white);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-outline:hover {
+  background: var(--primary-color);
+  color: var(--text-white);
+}
+
+/* Utilidades de sección */
 section {
   scroll-margin-top: 76px;
   position: relative;
+  padding: var(--spacing-2xl) 0;
 }
 
-/* Ajustes generales de contenedor */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-light);
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto var(--spacing-2xl);
+}
+
+/* Utilidades de contenedor */
 .container {
   position: relative;
   z-index: 2;
@@ -51,7 +160,15 @@ section {
 
 /* Media queries globales */
 @media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  
   section {
-    padding: 4rem 0;
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .section-title {
+    font-size: 2rem;
   }
 }

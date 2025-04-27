@@ -1,7 +1,4 @@
-import { Parallax } from 'react-parallax';
 import { MethodCard } from '../ui/MethodCard';
-
-const methodologyImage = '/images/methodology-bg.png';
 
 const methods = [
   {
@@ -23,31 +20,23 @@ const methods = [
 
 export const Methodology = () => {
   return (
-    <Parallax
-      blur={0}
-      bgImage={methodologyImage}
-      bgImageAlt="Metodología de investigación"
-      strength={150}
-      className="methodology-parallax"
-    >
-      <section className="methodology" id="metodologia">
-        <div className="container py-5">
-          <h2 className="text-center mb-4" data-aos="fade-down">
-            <i className="bi bi-gear-fill text-primary me-2 rotate-icon"></i>
-            Metodología
-          </h2>
-          <div className="row">
-            {methods.map((method, index) => (
-              <div className="col-md-4" key={index}>
-                <MethodCard 
-                  {...method}
-                  delay={index * 200}
-                />
-              </div>
-            ))}
-          </div>
+    <section className="methodology" id="metodologia">
+      <div className="container py-5">
+        <h2 className="text-center mb-4" data-aos="fade-down">
+          <i className="bi bi-gear-fill text-primary me-2 rotate-icon"></i>
+          Metodología
+        </h2>
+        <div className="row row-cols-1 row-cols-md-3 g-4">
+          {methods.map((method, index) => (
+            <div className="col" key={index}>
+              <MethodCard 
+                {...method}
+                delay={index * 200}
+              />
+            </div>
+          ))}
         </div>
-      </section>
-    </Parallax>
+      </div>
+    </section>
   );
 };
