@@ -11,6 +11,7 @@ import { Contact } from './components/sections/Contact'
 import { Analytics } from './components/analytics/Analytics'
 import { ThemeProvider } from './context/ThemeContext'
 import { GrowingPlant } from './components/layout/GrowingPlant'
+import { HorizontalScroll } from './components/sections/HorizontalScroll'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Hero />
         <About />
         <Methodology />
+        <HorizontalScroll />
         <Results />
         <Team />
         <Contact />
