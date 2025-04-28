@@ -19,7 +19,7 @@ export const Hero = () => {
     <section id="hero" className="hero">
       <div className="video-background">
         <iframe
-          src="https://player.vimeo.com/video/1039408593?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1#t=10s"
+          src="https://player.vimeo.com/video/1039408593?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1#t=12s"
           frameBorder="0"
           allow="autoplay; fullscreen"
           title="Background video"

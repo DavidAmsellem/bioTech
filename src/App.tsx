@@ -12,8 +12,38 @@ import { Analytics } from './components/analytics/Analytics'
 import { ThemeProvider } from './context/ThemeContext'
 import { GrowingPlant } from './components/layout/GrowingPlant'
 import { HorizontalScroll } from './components/sections/HorizontalScroll'
+import { useState, useEffect } from 'react';
+import { LoadingScreen } from './components/layout/LoadingScreen';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time and ensure minimum loading display
+    const minLoadingTime = 2000; // 2 seconds minimum
+    const loadStartTime = Date.now();
+
+    window.onload = () => {
+      const timeElapsed = Date.now() - loadStartTime;
+      const remainingTime = Math.max(minLoadingTime - timeElapsed, 0);
+
+      setTimeout(() => {
+        setIsLoading(false);
+      }, remainingTime);
+    };
+
+    // Fallback in case window.onload doesn't trigger
+    const fallbackTimer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(fallbackTimer);
+  }, []);
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
+
   return (
     <ThemeProvider>
       <Analytics />
@@ -30,7 +60,7 @@ function App() {
       </main>
       <Footer />
     </ThemeProvider>
-  )
+  );
 }
 
-export default App
+export default App;

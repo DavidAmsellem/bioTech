@@ -1,8 +1,32 @@
 .horizontal-scroll-section {
-  height: 300vh; /* This creates the scrollable area */
+  height: 120vh;
   position: relative;
   overflow: hidden;
-  background: var(--background-main);
+  background: 
+    linear-gradient(
+      135deg,
+      rgba(var(--primary-rgb), 0.05) 0%,
+      rgba(var(--secondary-rgb), 0.05) 100%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 255, 255, 0.2) 100%
+    ),
+    var(--background-main);
+  position: relative;
+}
+
+.horizontal-scroll-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 0l.83.828-1.415 1.415L51.8 0h2.827zM5.373 0l-.83.828L5.96 2.243 8.2 0H5.374zM48.97 0l3.657 3.657-1.414 1.414L46.143 0h2.828zM11.03 0L7.372 3.657 8.787 5.07 13.857 0H11.03zm32.284 0L49.8 6.485 48.384 7.9l-7.9-7.9h2.83zM16.686 0L10.2 6.485 11.616 7.9l7.9-7.9h-2.83zM22.343 0L13.857 8.485 15.272 9.9l7.9-7.9h-.828zm5.657 0L19.515 8.485 20.93 9.9l7.9-7.9h-1.83zM32.657 0L26.171 6.485 27.586 7.9l7.9-7.9h-2.83zM38.314 0L29.828 8.485 31.243 9.9l7.9-7.9h-.828zm5.657 0L35.485 8.485 36.9 9.9l7.9-7.9h-1.83zM53.313 0L49.657 3.657 51.07 5.07 53.9 2.243 53.07 1.414 53.9.586l-.586-.586zM2.243 0L0 2.243l.586.586h.828L0 4.243l.828.828L4.243 1.414 3.414.586h.828L2.243 0zm52.029 0L51.8 2.243l-.586.586h-.828L53.9 0h.372zM.586 0L0 .586l.586.586L1.414 0H.586zm52.029 0L49.657 2.957l-.586.586h-.828L51.8 0h.814zm-4.244 0L44.414 3.957l-.586.586h-.828L47.557 0h.814zM.586 0L0 .586 2.957 3.543l.586.586h.828L0 .586h.586zm47.785 0L44.414 3.957l3.957 3.957h-.814l.586.586L52.6 4.043l-.586-.586h-.828L48.371 0zm-8.544 0L33.414 6.328l-.586.586h-.828L39.828 0h-.001zM.586 0L0 .586l6.328 6.328.586.586h.828L0 0h.586zm39.241 0L33.414 6.328l6.328 6.328h-.814l.586.586 4.501-4.501-.586-.586h-.828L39.828 0zm-8.544 0L22.414 8.7l-.586.586h-.828L31.284 0h-.001zM.586 0L0 .586l8.7 8.7.586.586h.828L0 0h.586zm30.697 0L22.414 8.7l8.7 8.7h-.814l.586.586 5.873-5.873-.586-.586h-.828L31.284 0zm-8.544 0L11.414 11.07l-.586.586h-.828L22.74 0h-.001zM.586 0L0 .586l11.07 11.07.586.586h.828L0 0h.586zm22.153 0L11.414 11.07l11.07 11.07h-.814l.586.586 7.245-7.245-.586-.586h-.828L22.74 0zm-8.544 0L0 14.456v.172L8.457 23.1l.586.586h.828L14.195 0h-.001zM0 8.785v5.671L5.414 20.7l.586.586h.828L0 8.785zm0-8.199v5.671l8.457 8.457.586.586h.828L0 .586z' fill='%23000000' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .scroll-container {
@@ -15,29 +39,162 @@
 }
 
 .scroll-item {
-  min-width: 100vw;
+  min-width: 70vw; /* Reduced from 100vw to make cards closer */
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 1rem; /* Reduced from 2rem */
 }
 
 .content-card {
-  background: var(--background-secondary);
-  border-radius: var(--border-radius-lg);
-  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 30px;
+  padding: 2.5rem 3.5rem; /* Adjusted padding */
   width: 100%;
-  max-width: 600px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 1000px; /* Increased to compensate for closer spacing */
+  min-height: 300px; /* Reduced from 560px */
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    0 8px 16px rgba(0, 0, 0, 0.04),
+    inset 0 -5px 0 rgba(0, 0, 0, 0.05); /* Cartoon-style inner shadow */
+  text-align: left;
+  border: 3px solid rgba(var(--primary-rgb), 0.2); /* Thicker border */
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 0 -5%; /* Add negative margin to overlap spacing */
+}
+
+.content-card::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background: rgba(var(--primary-rgb), 0.1);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.content-card-header {
+  margin-bottom: 2rem;
+}
+
+.content-card-icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  display: inline-block;
+  padding: 1rem;
+  background: rgba(var(--primary-rgb), 0.1);
+  border-radius: 20px;
+  transform: rotate(-5deg);
+}
+
+.content-card h3 {
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  font-weight: 800;
+  font-size: 2rem; /* Reduced from 2.2rem */
+  letter-spacing: -0.5px;
+}
+
+.content-card-subtitle {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem; /* Reduced from 2rem */
+}
+
+.content-card-body {
+  margin-bottom: 2rem;
+}
+
+.content-card-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Changed from 2 columns to 3 */
+  gap: 1rem; /* Reduced from 1.5rem */
+  margin-bottom: 2rem;
+}
+
+.stat-item {
+  padding: 1.2rem; /* Reduced from 1.5rem */
+  background: rgba(var(--primary-rgb), 0.08);
+  border-radius: 16px;
   text-align: center;
-  border: 1px solid var(--border-color);
+  border: 2px dashed rgba(var(--primary-rgb), 0.2);
   transition: transform 0.3s ease;
 }
 
+.stat-item:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.content-card-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Display features in 2 columns */
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem; /* Reduced from 1rem */
+  background: white;
+  padding: 0.8rem 1.2rem; /* Reduced padding */
+  border-radius: 12px;
+  border: 2px solid rgba(var(--primary-rgb), 0.1);
+  transform: rotate(-1deg);
+  transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: rotate(1deg) translateX(5px);
+}
+
+.feature-icon {
+  color: var(--primary-color);
+  margin-right: 1rem;
+  font-size: 1.2rem;
+}
+
+.feature-text {
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+.content-card-footer {
+  margin-top: auto;
+  padding-top: 2rem;
+  border-top: 2px dashed rgba(var(--primary-rgb), 0.2);
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
 .content-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--primary-color);
+  transform: translateY(-8px) scale(1.02); /* Modified transform */
+  z-index: 2; /* Ensure hovered card appears above others */
+  border-color: rgba(var(--primary-rgb), 0.3);
+  box-shadow: 
+    0 30px 60px rgba(var(--primary-rgb), 0.15),
+    0 12px 24px rgba(var(--primary-rgb), 0.1);
 }
 
 .image-wrapper {
@@ -59,14 +216,11 @@
   transform: scale(1.05);
 }
 
-.content-card h3 {
-  color: var(--text-color);
-  margin-bottom: 1rem;
-}
-
 .content-card p {
   color: var(--text-muted);
   margin: 0;
+  line-height: 1.6;
+  font-size: 1.1rem;
 }
 
 @media (max-width: 768px) {
@@ -86,3 +240,211 @@
     padding: 1rem;
   }
 }
+
+.cartoon-illustration {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 2rem;
+  position: relative;
+  background: var(--background-main);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+}
+
+/* Analysis Section */
+.soil-layers {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.layer {
+  flex: 1;
+  position: relative;
+  animation: layerSlide 3s ease infinite;
+}
+
+.layer-1 { background: var(--primary-light); }
+.layer-2 { background: var(--secondary-light); }
+.layer-3 { background: var(--accent-light); }
+
+.magnifying-glass {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  border: 8px solid var(--primary-color);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: examine 4s ease infinite;
+}
+
+.magnifying-glass::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  right: -15px;
+  width: 8px;
+  height: 30px;
+  background: var(--primary-color);
+  transform: rotate(45deg);
+}
+
+/* Treatment Section */
+.soil {
+  height: 60%;
+  background: var(--secondary-light);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.plant {
+  position: absolute;
+  bottom: 60%;
+  width: 4px;
+  background: var(--primary-color);
+  transform-origin: bottom;
+  animation: grow 4s ease infinite;
+}
+
+.plant::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -10px;
+  width: 24px;
+  height: 24px;
+  background: var(--primary-light);
+  border-radius: 50% 0;
+  transform: rotate(-45deg);
+}
+
+.plant-1 { left: 30%; height: 100px; animation-delay: 0s; }
+.plant-2 { left: 50%; height: 120px; animation-delay: 0.5s; }
+.plant-3 { left: 70%; height: 80px; animation-delay: 1s; }
+
+.water-drops .drop {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--primary-light);
+  border-radius: 50%;
+  animation: falling 2s ease infinite;
+}
+
+/* Recovery Section */
+.healthy-soil {
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    var(--primary-light),
+    var(--secondary-light)
+  );
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.tree {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 120px;
+  background: var(--primary-dark);
+}
+
+.tree::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  width: 100px;
+  height: 100px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  animation: sway 4s ease infinite;
+}
+
+/* Monitoring Section */
+.graph {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 80%;
+  padding: 20px;
+}
+
+.bar {
+  width: 40px;
+  background: var(--primary-color);
+  animation: growUp 3s ease infinite;
+}
+
+.bar-1 { height: 60%; animation-delay: 0s; }
+.bar-2 { height: 80%; animation-delay: 0.5s; }
+.bar-3 { height: 100%; animation-delay: 1s; }
+
+@keyframes layerSlide {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+}
+
+@keyframes examine {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-30%, -50%) scale(1.2); }
+}
+
+@keyframes grow {
+  0% { transform: scaleY(0); }
+  100% { transform: scaleY(1); }
+}
+
+@keyframes falling {
+  0% { transform: translateY(-100%) scale(1); }
+  100% { transform: translateY(100%) scale(0); }
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+@keyframes growUp {
+  0% { transform: scaleY(0); }
+  100% { transform: scaleY(1); }
+}
+
+/* Add subtle pastel background variations for each card */
+.scroll-item:nth-child(1) .content-card {
+  background: linear-gradient(135deg, 
+    rgba(255, 240, 245, 0.95),
+    rgba(255, 255, 255, 0.95));
+}
+
+.scroll-item:nth-child(2) .content-card {
+  background: linear-gradient(135deg, 
+    rgba(240, 255, 244, 0.95),
+    rgba(255, 255, 255, 0.95));
+}
+
+.scroll-item:nth-child(3) .content-card {
+  background: linear-gradient(135deg, 
+    rgba(240, 248, 255, 0.95),
+    rgba(255, 255, 255, 0.95));
+}
+
+.scroll-item:nth-child(4) .content-card {
+  background: linear-gradient(135deg, 
+    rgba(255, 250, 240, 0.9),
+    rgba(255, 255, 255, 0.9));
+}
+
+/* Card color variations */
+.scroll-item:nth-child(1) .content-card { background: linear-gradient(135deg, #fff9f9, #ffffff); }
+.scroll-item:nth-child(2) .content-card { background: linear-gradient(135deg, #f9fff9, #ffffff); }
+.scroll-item:nth-child(3) .content-card { background: linear-gradient(135deg, #f9f9ff, #ffffff); }
+.scroll-item:nth-child(4) .content-card { background: linear-gradient(135deg, #fffff9, #ffffff); }
