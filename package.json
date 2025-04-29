@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@popperjs/core": "^2.11.8",
     "@tweakpane/core": "^2.0.5",
     "@types/aos": "^3.0.7",

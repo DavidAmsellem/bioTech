@@ -1,66 +1,80 @@
 import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../../styles/sections/horizontal-scroll.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const scrollSections = [
   {
     title: "Análisis Inicial",
-    subtitle: "Evaluación detallada del terreno",
+    subtitle: "Evaluación del terreno",
     icon: "bi-search",
     stats: [
       { value: "95%", label: "Precisión" },
-      { value: "48h", label: "Tiempo medio" }
+      { value: "48h", label: "Tiempo" }
     ],
     features: [
-      { icon: "bi-check-circle", text: "Análisis de nutrientes" },
-      { icon: "bi-check-circle", text: "Medición de pH" },
-      { icon: "bi-check-circle", text: "Evaluación microbiana" }
+      { icon: "bi-check-circle", text: "Análisis completo" },
+      { icon: "bi-check-circle", text: "Evaluación precisa" }
     ],
-    footer: "Primera fase del proceso de recuperación"
+    footer: "Primera fase del proceso"
   },
   {
-    title: "Tratamiento del Suelo",
-    subtitle: "Aplicación de biotecnología",
+    title: "Diagnóstico",
+    subtitle: "Identificación de problemas",
+    icon: "bi-clipboard-data",
+    stats: [
+      { value: "99%", label: "Fiabilidad" },
+      { value: "24h", label: "Resultados" }
+    ],
+    features: [
+      { icon: "bi-check-circle", text: "Análisis detallado" },
+      { icon: "bi-check-circle", text: "Informe completo" }
+    ],
+    footer: "Diagnóstico preciso"
+  },
+  {
+    title: "Tratamiento",
+    subtitle: "Aplicación biotecnológica",
     icon: "bi-flower1",
     stats: [
       { value: "85%", label: "Efectividad" },
       { value: "3mo", label: "Duración" }
     ],
     features: [
-      { icon: "bi-check-circle", text: "Bioremediación natural" },
-      { icon: "bi-check-circle", text: "Control de pH" },
-      { icon: "bi-check-circle", text: "Monitoreo continuo" }
+      { icon: "bi-check-circle", text: "Bioremediación" },
+      { icon: "bi-check-circle", text: "Monitoreo" }
     ],
-    footer: "Proceso de recuperación activa"
+    footer: "Proceso activo"
   },
   {
     title: "Resultados",
-    subtitle: "Mejora demostrable",
+    subtitle: "Mejoras demostrables",
     icon: "bi-graph-up",
     stats: [
       { value: "90%", label: "Recuperación" },
-      { value: "2x", label: "Productividad" }
+      { value: "2x", label: "Rendimiento" }
     ],
     features: [
       { icon: "bi-check-circle", text: "Mayor fertilidad" },
-      { icon: "bi-check-circle", text: "Mejor retención" },
-      { icon: "bi-check-circle", text: "Balance óptimo" }
+      { icon: "bi-check-circle", text: "Mejor balance" }
     ],
-    footer: "Resultados verificables y sostenibles"
+    footer: "Resultados verificables"
   },
   {
     title: "Sostenibilidad",
-    subtitle: "Impacto a largo plazo",
+    subtitle: "Impacto duradero",
     icon: "bi-tree",
     stats: [
       { value: "100%", label: "Natural" },
       { value: "5yr+", label: "Duración" }
     ],
     features: [
-      { icon: "bi-check-circle", text: "Ecológicamente responsable" },
-      { icon: "bi-check-circle", text: "Autosostenible" },
-      { icon: "bi-check-circle", text: "Bajo mantenimiento" }
+      { icon: "bi-check-circle", text: "Eco-friendly" },
+      { icon: "bi-check-circle", text: "Autosostenible" }
     ],
-    footer: "Solución permanente y respetuosa con el medio ambiente"
+    footer: "Solución permanente"
   }
 ];
 
@@ -120,35 +134,48 @@ export const HorizontalScroll = () => {
   useEffect(() => {
     const section = sectionRef.current;
     const container = containerRef.current;
+    
     if (!section || !container) return;
 
-    const updateScroll = () => {
-      const rect = section.getBoundingClientRect();
-      
-      // Check if section is in view
-      if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
-        const progress = Math.abs(rect.top) / (rect.height - window.innerHeight);
-        const moveX = progress * (container.scrollWidth - window.innerWidth);
-        container.style.transform = `translateX(-${moveX}px)`;
-        container.style.position = 'fixed';
-        container.style.top = '0';
-      } else if (rect.top > 0) {
-        // Before scroll area
-        container.style.transform = 'translateX(0)';
-        container.style.position = 'absolute';
-        container.style.top = '0';
-      } else {
-        // After scroll area
-        container.style.position = 'absolute';
-        container.style.top = `${rect.height - container.offsetHeight}px`;
-        container.style.transform = `translateX(-${container.scrollWidth - window.innerWidth}px)`;
+    // Calcular el padding necesario para centrar primera y última card
+    const paddingOffset = window.innerWidth / 2 - (container.children[0] as HTMLElement).offsetWidth / 2;
+
+    // Aplicar padding al contenedor
+    container.style.paddingLeft = `${paddingOffset}px`;
+    container.style.paddingRight = `${paddingOffset}px`;
+
+    gsap.to(container, {
+      x: () => -(container.scrollWidth - window.innerWidth),
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        pin: true,
+        anticipatePin: 1,
+        start: "top top",
+        end: () => `+=${container.scrollWidth - window.innerWidth}`,
+        scrub: 1.5,
+        invalidateOnRefresh: true,
+        snap: {
+          snapTo: 1/(scrollSections.length-1),
+          duration: {min: 0.2, max: 0.6},
+          ease: "power1.inOut"
+        },
+        // Actualizar padding en resize
+        onRefresh: ({ progress }) => {
+          const newPadding = window.innerWidth / 2 - (container.children[0] as HTMLElement).offsetWidth / 2;
+          container.style.paddingLeft = `${newPadding}px`;
+          container.style.paddingRight = `${newPadding}px`;
+          // Mantener la posición relativa del scroll
+          gsap.set(container, {
+            x: -((container.scrollWidth - window.innerWidth) * progress)
+          });
+        }
       }
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
-
-    window.addEventListener('scroll', updateScroll);
-    updateScroll(); // Initial position
-
-    return () => window.removeEventListener('scroll', updateScroll);
   }, []);
 
   return (
@@ -160,6 +187,20 @@ export const HorizontalScroll = () => {
           </div>
         ))}
       </div>
+      <svg 
+        className="scroll-end-arrow" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path 
+          d="M12 22L12 2M12 22L6 16M12 22L18 16" 
+          stroke="currentColor" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+          strokeLinejoin="round"
+        />
+      </svg>
     </section>
   );
 };

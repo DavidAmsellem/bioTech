@@ -72,7 +72,7 @@ const stats = [
     text: "Hectáreas tratadas" 
   },
   { 
-    icon: "flask-fill", 
+    icon: "award-fill", 
     value: 1000, 
     suffix: "+", 
     text: "Muestras analizadas" 

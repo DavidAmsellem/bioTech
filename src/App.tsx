@@ -14,6 +14,7 @@ import { GrowingPlant } from './components/layout/GrowingPlant'
 import { HorizontalScroll } from './components/sections/HorizontalScroll'
 import { useState, useEffect } from 'react';
 import { LoadingScreen } from './components/layout/LoadingScreen';
+import { ValenTime } from './components/sections/ValenTime';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -56,6 +57,7 @@ function App() {
         <HorizontalScroll />
         <Results />
         <Team />
+        <ValenTime />
         <Contact />
       </main>
       <Footer />
