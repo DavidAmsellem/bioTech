@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../../styles/sections/horizontal-scroll.css';
+import { FloatingIcons } from '../layout/FloatingIcons';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -180,6 +181,7 @@ export const HorizontalScroll = () => {
 
   return (
     <section ref={sectionRef} className="horizontal-scroll-section">
+    <FloatingIcons />
       <div className="scroll-container" ref={containerRef}>
         {scrollSections.map((item, index) => (
           <div key={index} className="scroll-item">

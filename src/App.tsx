@@ -52,12 +52,12 @@ function App() {
       <GrowingPlant />
       <main>
         <Hero />
+        <ValenTime />
         <About />
         <Methodology />
         <HorizontalScroll />
         <Results />
         <Team />
-        <ValenTime />
         <Contact />
       </main>
       <Footer />

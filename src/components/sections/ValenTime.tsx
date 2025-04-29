@@ -20,6 +20,22 @@ const sections = [
     stats: {
       precision: "99%",
       tiempo: "48h"
+    },
+    svg: {
+      id: "analisis",
+      element: (
+        <svg viewBox="0 0 400 400" className="section-svg">
+          <g className="soil-layers">
+            <path className="soil-top" d="M50,200 H350 Q370,150 350,100 H50 Q30,150 50,200" fill="#8B4513"/>
+            <path className="soil-middle" d="M50,300 H350 Q370,250 350,200 H50 Q30,250 50,300" fill="#654321"/>
+            <path className="soil-bottom" d="M50,400 H350 Q370,350 350,300 H50 Q30,350 50,400" fill="#3E2723"/>
+          </g>
+          <g className="measurement-tools">
+            <circle className="ph-meter" cx="150" cy="150" r="20" fill="#4CAF50"/>
+            <rect className="sensor" x="250" y="120" width="40" height="60" fill="#2196F3"/>
+          </g>
+        </svg>
+      )
     }
   },
   {
@@ -36,6 +52,22 @@ const sections = [
     stats: {
       precision: "95%",
       efectividad: "90%"
+    },
+    svg: {
+      id: "diagnostico",
+      element: (
+        <svg viewBox="0 0 400 400" className="section-svg">
+          <g className="diagnostic-graph">
+            <path className="graph-line" d="M50,350 Q150,200 250,250 T350,100" fill="none" stroke="#4CAF50" strokeWidth="4"/>
+            <g className="data-points">
+              <circle cx="50" cy="350" r="8" fill="#FFF"/>
+              <circle cx="150" cy="200" r="8" fill="#FFF"/>
+              <circle cx="250" cy="250" r="8" fill="#FFF"/>
+              <circle cx="350" cy="100" r="8" fill="#FFF"/>
+            </g>
+          </g>
+        </svg>
+      )
     }
   },
   {
@@ -52,6 +84,25 @@ const sections = [
     stats: {
       efectividad: "85%",
       duracion: "3-6 meses"
+    },
+    svg: {
+      id: "tratamiento",
+      element: (
+        <svg viewBox="0 0 400 400" className="section-svg">
+          <g className="plants">
+            <path className="plant-stem" d="M200,350 V250" stroke="#4CAF50" strokeWidth="4"/>
+            <g className="leaves">
+              <path className="leaf" d="M200,300 Q230,280 200,260" fill="none" stroke="#4CAF50" strokeWidth="4"/>
+              <path className="leaf" d="M200,280 Q170,260 200,240" fill="none" stroke="#4CAF50" strokeWidth="4"/>
+            </g>
+          </g>
+          <g className="microorganisms">
+            <circle className="microbe" cx="150" cy="320" r="10" fill="#81C784"/>
+            <circle className="microbe" cx="250" cy="340" r="8" fill="#81C784"/>
+            <circle className="microbe" cx="200" cy="360" r="12" fill="#81C784"/>
+          </g>
+        </svg>
+      )
     }
   }
 ];
@@ -71,17 +122,19 @@ export const ValenTime = () => {
         start: 'top top',
         pin: true,
         pinSpacing: false,
-        scrub: 1,
+        scrub: 3, // Aumentado de 1 a 2 para hacer más lento el scrub
         snap: 1,
         onEnter: () => gsap.to(section, {
           opacity: 1,
           scale: 1,
-          duration: 0.5
+          duration: 1.5, // Aumentado de 0.5 a 1.5
+          ease: "power2.inOut" // Añadido ease para suavizar
         }),
         onLeaveBack: () => gsap.to(section, {
           opacity: 0.5,
           scale: 0.95,
-          duration: 1,
+          duration: 1.7, // Aumentado de 1 a 1.5
+          ease: "power2.inOut" // Añadido ease para suavizar
         })
       });
     });
@@ -126,6 +179,11 @@ export const ValenTime = () => {
               <div className="image-container">
                 <img src={section.image} alt={section.title} />
               </div>
+              {section.svg && (
+                <div className="svg-container">
+                  {section.svg.element}
+                </div>
+              )}
             </div>
           </div>
         </div>
