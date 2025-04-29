@@ -1,32 +1,43 @@
+/* Configuración principal del navbar */
 .navbar {
+  /* Animación suave para todos los cambios */
   transition: var(--transition-normal);
+  /* Fondo semi-transparente con efecto cristal */
   background: var(--background-main, rgba(255, 255, 255, 0.8));
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  /* Sombra y borde sutiles */
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  padding: var(--spacing-sm) 0;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  /* Posicionamiento fijo en la parte superior */
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
+  padding: var(--spacing-sm) 0;
 }
 
+/* Estado al hacer scroll */
 .navbar-scrolled {
+  /* Aumenta opacidad y modifica sombra */
   background: var(--background-main, rgba(255, 255, 255, 0.9));
   box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
   border-color: rgba(255, 255, 255, 0.3);
 }
 
+/* Estilo del logo */
 .navbar-brand {
-  font-size: 1.5rem;
-  font-weight: var(--font-weight-bold);
+  /* Efecto de gradiente en el texto */
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent !important;
+  /* Tipografía y espaciado */
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
   letter-spacing: -0.5px;
+  /* Alineación con icono */
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
@@ -37,20 +48,24 @@
   color: var(--primary-color);
 }
 
+/* Enlaces de navegación */
 .nav-link {
+  /* Estilos base */
   font-weight: var(--font-weight-medium);
   font-size: 1.1rem;
   color: var(--text-dark) !important;
+  /* Espaciado y bordes */
   padding: var(--spacing-sm) var(--spacing-md) !important;
   margin: 0 var(--spacing-xs);
-  transition: var(--transition-normal);
-  position: relative;
   border-radius: var(--border-radius-sm);
+  /* Efectos visuales */
   background: var(--background-nav-item, rgba(255, 255, 255, 0.1));
   backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  position: relative;
+  transition: var(--transition-normal);
 }
 
+/* Línea indicadora bajo los enlaces */
 .nav-link::after {
   content: '';
   position: absolute;
@@ -80,7 +95,7 @@
   font-weight: var(--font-weight-semibold);
   background: linear-gradient(
     to bottom,
-    transparent 0%,
+    transparent 100%,
     transparent 90%,
     var(--primary-light) 90%,
     var(--primary-light) 100%
@@ -92,6 +107,7 @@
   background-color: var(--background-light);
 }
 
+/* Botón hamburguesa para móvil */
 .navbar-toggler {
   border: none;
   padding: var(--spacing-sm);
@@ -117,14 +133,16 @@
   color: var(--primary-color);
 }
 
-/* Dropdown styles */
+/* Menú desplegable */
 .dropdown-menu {
+  /* Estilo moderno con efecto cristal */
   border: none;
-  border-radius: var(--border-radius-md);
-  box-shadow: var(--shadow-lg);
-  padding: var(--spacing-sm);
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(10px);
+  /* Sombras y bordes */
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-sm);
 }
 
 .dropdown-item {
@@ -140,22 +158,26 @@
   transform: translateX(5px);
 }
 
-/* Responsive */
+/* Diseño responsive */
 @media (max-width: 991px) {
+  /* Panel lateral en móvil */
   .navbar-collapse {
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(10px);
+    /* Espaciado y sombras */
     padding: var(--spacing-md);
     border-radius: var(--border-radius-md);
     box-shadow: var(--shadow-lg);
     margin-top: var(--spacing-sm);
   }
 
+  /* Ajustes de enlaces en móvil */
   .nav-link {
     padding: var(--spacing-sm) var(--spacing-md) !important;
     margin: var(--spacing-xs) 0;
   }
 
+  /* Indicador vertical en móvil */
   .nav-link::after {
     bottom: auto;
     top: 0;
@@ -174,5 +196,18 @@
   .nav-link.active {
     background: var(--background-light);
     padding-left: var(--spacing-lg) !important;
+  }
+
+  /* Eliminar subrayado en hover móvil */
+  .nav-link:hover::after {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  /* Mantener solo el indicador para el estado activo */
+  .nav-link.active::after {
+    width: 3px;
+    height: 100%;
   }
 }
