@@ -127,13 +127,13 @@ export const ValenTime = () => {
         onEnter: () => gsap.to(section, {
           opacity: 1,
           scale: 1,
-          duration: 1.5, // Aumentado de 0.5 a 1.5
+          duration: 2, // Aumentado de 0.5 a 1.5
           ease: "power2.inOut" // Añadido ease para suavizar
         }),
         onLeaveBack: () => gsap.to(section, {
-          opacity: 0.5,
+          opacity: 1,
           scale: 0.95,
-          duration: 1.7, // Aumentado de 1 a 1.5
+          duration: 2, // Aumentado de 1 a 1.5
           ease: "power2.inOut" // Añadido ease para suavizar
         })
       });
