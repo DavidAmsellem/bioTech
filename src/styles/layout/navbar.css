@@ -48,6 +48,12 @@
   color: var(--primary-color);
 }
 
+.navbar-logo {
+  height: 40px;
+  width: auto;
+  transition: var(--transition-normal);
+}
+
 /* Enlaces de navegación */
 .nav-link {
   /* Estilos base */
@@ -209,5 +215,11 @@
   .nav-link.active::after {
     width: 3px;
     height: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-logo {
+    height: 35px;
   }
 }

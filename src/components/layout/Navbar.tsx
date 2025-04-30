@@ -50,9 +50,8 @@ export const Navbar = () => {
   return (
     <nav className={`navbar navbar-expand-lg fixed-top ${isScrolled ? 'navbar-scrolled' : ''}`}>
       <div className="container">
-        <a className="navbar-brand d-flex align-items-center" href="#">
-          <i className="bi bi-leaf me-2"></i>
-          BioTech
+        <a className="navbar-brand" href="#">
+          <img src="/images/logo_nav.png" alt="BioTech Logo" className="navbar-logo" />
         </a>
         <button 
           className="navbar-toggler" 

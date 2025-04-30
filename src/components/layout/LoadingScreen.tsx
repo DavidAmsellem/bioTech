@@ -5,41 +5,61 @@ export const LoadingScreen = () => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const interval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
-          clearInterval(timer);
+          clearInterval(interval);
           return 100;
         }
         return prev + 1;
       });
     }, 20);
 
-    return () => clearInterval(timer);
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="loading-screen">
-      <div className="loading-content">
-        <div className="loading-brand">
-          <h1 className="brand-text">Bio<span>Tech</span></h1>
-        </div>
-        <div className="progress-container">
-          <div className="progress-bar">
-            <div 
-              className="progress-fill" 
-              style={{ width: `${progress}%` }}
-            ></div>
+      <div className="text-container">
+        <div className="loading-text">
+          <img 
+            src="/images/logo.png" 
+            alt="BioTech Logo" 
+            className="loading-logo"
+          />
+          <div className="progress-container">
+            <div className="progress-bar">
+              <div 
+                className="progress-fill" 
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+            <span className="progress-number">{progress}%</span>
           </div>
-          <div className="progress-dots">
-            {[...Array(3)].map((_, i) => (
-              <div key={i} className="dot"></div>
-            ))}
-          </div>
         </div>
-        <div className="loading-info">
-          <p className="loading-message">Preparando soluciones biotecnológicas</p>
-          <p className="loading-percentage">{progress}%</p>
+      </div>
+      <div className="gradient-bg">
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="goo">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+              <feColorMatrix 
+                in="blur" 
+                mode="matrix" 
+                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" 
+                result="goo" 
+              />
+              <feBlend in="SourceGraphic" in2="goo" />
+            </filter>
+          </defs>
+        </svg>
+        <div className="gradients-container">
+          <div className="g1"></div>
+          <div className="g2"></div>
+          <div className="g3"></div>
+          <div className="g4"></div>
+          <div className="g5"></div>
+          <div className="interactive"></div>
         </div>
       </div>
     </div>
