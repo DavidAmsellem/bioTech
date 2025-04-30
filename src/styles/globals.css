@@ -5,32 +5,37 @@
 
 :root {
   /* Paleta de colores modo claro */
-  --primary-color: #98D8AA;
-  --primary-light: #B8E0C2;
-  --primary-dark: #78B790;
+  --primary-color: #7FB3D5;  /* Azul conocimiento */
+  --primary-light: #A9CCE3;  /* Azul conocimiento claro */
+  --primary-dark: #5499C7;   /* Azul conocimiento oscuro */
   
-  --secondary-color: #A1C2F1;
-  --secondary-light: #C2D8F7;
-  --secondary-dark: #7FA3D7;
+  --secondary-color: #D5B8FF; /* Morado pastel */
+  --secondary-light: #E3D1FF; /* Morado pastel claro */
+  --secondary-dark: #B79DDB;  /* Morado pastel oscuro */
   
-  --accent-color: #FFB6B6;
-  --accent-light: #FFD3D3;
-  --accent-dark: #FF9494;
+  --accent-color: #D4D4D4;   /* Gris pastel */
+  --accent-light: #E8E8E8;   /* Gris pastel claro */
+  --accent-dark: #BDBDBD;    /* Gris pastel oscuro */
 
-  --background-main: #F8F9FA;
-  --background-alt: #F0F7F1;
-  --background-card: #FFFFFF;
-  --background-dark: #4A5B6B;
+  --background-main: #F8F9FA;  /* Blanco latente */
+  --background-alt: #F0F4F7;   /* Blanco latente alt */
+  --background-card: #FFFFFF;  /* Blanco puro */
+  --background-dark: #4A5B6B;  /* Gris azulado oscuro */
   
   --text-dark: #5C6B73;
   --text-medium: #8596A0;
   --text-light: #A5B5BE;
   --text-white: #FFFFFF;
+
+  /* RGB values for colors */
+  --primary-rgb: 127, 179, 213;    /* Azul conocimiento */
+  --secondary-rgb: 213, 184, 255;  /* Morado pastel */
+  --accent-rgb: 212, 212, 212;     /* Gris pastel */
   
   /* Gradientes */
-  --gradient-primary: linear-gradient(135deg, #98D8AA 0%, #B8E0C2 100%);
-  --gradient-secondary: linear-gradient(135deg, #A1C2F1 0%, #C2D8F7 100%);
-  --gradient-accent: linear-gradient(135deg, #FFB6B6 0%, #FFD3D3 100%);
+  --gradient-primary: linear-gradient(135deg, #7FB3D5 0%, #A9CCE3 100%);
+  --gradient-secondary: linear-gradient(135deg, #D5B8FF 0%, #E3D1FF 100%);
+  --gradient-accent: linear-gradient(135deg, #D4D4D4 0%, #E8E8E8 100%);
   --gradient-dark: linear-gradient(135deg, #4A5B6B 0%, #5C6B73 100%);
   
   /* Sombras más suaves */
@@ -64,26 +69,21 @@
   --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
   --glass-blur: blur(16px);
   --glass-hover-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
-  
-  /* RGB values for colors (needed for rgba) */
-  --primary-rgb: 152, 216, 170;
-  --secondary-rgb: 161, 194, 241;
-  --accent-rgb: 255, 182, 182;
 }
 
 /* Tema oscuro */
 [data-theme='dark'] {
-  --primary-color: #78B790;
-  --primary-light: #98D8AA;
-  --primary-dark: #5A8B6E;
+  --primary-color: #5499C7;    /* Azul conocimiento oscuro */
+  --primary-light: #7FB3D5;    /* Azul conocimiento */
+  --primary-dark: #2E86C1;     /* Azul conocimiento muy oscuro */
   
-  --secondary-color: #7FA3D7;
-  --secondary-light: #A1C2F1;
-  --secondary-dark: #5A7EB3;
+  --secondary-color: #B79DDB;  /* Morado pastel oscuro */
+  --secondary-light: #D5B8FF;  /* Morado pastel */
+  --secondary-dark: #9B7FBF;   /* Morado pastel muy oscuro */
   
-  --accent-color: #FF9494;
-  --accent-light: #FFB6B6;
-  --accent-dark: #FF7272;
+  --accent-color: #BDBDBD;     /* Gris pastel oscuro */
+  --accent-light: #D4D4D4;     /* Gris pastel */
+  --accent-dark: #A4A4A4;      /* Gris pastel muy oscuro */
 
   --background-main: #1A1A1A;
   --background-alt: #242424;
@@ -96,15 +96,14 @@
   --text-white: #FFFFFF;
 
   /* RGB values for dark theme */
-  --primary-rgb: 120, 183, 144;
-  --secondary-rgb: 127, 163, 215;
-  --accent-rgb: 255, 148, 148;
+  --primary-rgb: 84, 153, 199;     /* Azul conocimiento oscuro */
+  --secondary-rgb: 183, 157, 219;  /* Morado pastel oscuro */
+  --accent-rgb: 189, 189, 189;     /* Gris pastel oscuro */
 
   /* Ajustar gradientes para el tema oscuro */
-  --gradient-primary: linear-gradient(135deg, #78B790 0%, #5A8B6E 100%);
-  --gradient-secondary: linear-gradient(135deg, #7FA3D7 0%, #5A7EB3 100%);
-  --gradient-accent: linear-gradient(135deg, #FF9494 0%, #FF7272 100%);
-  --gradient-dark: linear-gradient(135deg, #333333 0%, #1A1A1A 100%);
+  --gradient-primary: linear-gradient(135deg, #5499C7 0%, #2E86C1 100%);
+  --gradient-secondary: linear-gradient(135deg, #B79DDB 0%, #9B7FBF 100%);
+  --gradient-accent: linear-gradient(135deg, #BDBDBD 0%, #A4A4A4 100%);
 
   /* Ajustar sombras para el tema oscuro */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);

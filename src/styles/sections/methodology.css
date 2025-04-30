@@ -1,7 +1,7 @@
 .methodology {
   background: var(--background-card);
   position: relative;
-  padding: var(--spacing-2xl) 0 calc(var(--spacing-2xl) + 60px) 0; /* Aumentado el padding bottom */
+  padding: var(--spacing-2xl) 0 calc(var(--spacing-2xl) + 60px) 0;
   min-height: 80vh;
   overflow: visible;
 }
@@ -13,8 +13,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 10% 20%, var(--secondary-light) 0%, transparent 80%);
-  opacity: 0.05;
+  background: radial-gradient(circle at 10% 20%, rgba(var(--secondary-rgb), 0.05) 0%, transparent 80%);
 }
 
 .methodology .container {
@@ -59,7 +58,7 @@
 .methodology-line {
   content: '';
   position: absolute;
-top: 200px; 
+  top: 200px; 
   width: 8px;
   height: 100px;
   background: linear-gradient(180deg, 
@@ -103,17 +102,13 @@ top: 200px;
 
 .method-card {
   background: var(--background-main);
-  border: 1px solid rgba(66, 165, 245, 0.1);
-  border-radius: 15px;
-  padding: 2rem;
+  border: 1px solid rgba(var(--secondary-rgb), 0.1);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
   transition: transform 0.3s ease;
   box-shadow: var(--shadow-md);
   position: relative;
   z-index: 2;
-  opacity: 1;
-  visibility: visible;
-  display: block;
-  transform: none;
   backdrop-filter: blur(5px);
 }
 
@@ -124,7 +119,7 @@ top: 200px;
 }
 
 .method-card .feature-icon {
-  color: var(--primary-color);
+  color: var(--secondary-color);
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
   transition: var(--transition-normal);
@@ -182,10 +177,14 @@ top: 200px;
   margin-bottom: 1rem;
   display: inline-block;
   transition: transform 0.3s ease;
+  background: var(--gradient-secondary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .methodology-step.active .step-icon {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 .step-content h3 {
@@ -213,6 +212,7 @@ top: 200px;
   .method-card {
     padding: 1.5rem;
     margin-left: 3rem;
+    margin-bottom: var(--spacing-lg);
   }
   
   .step-icon {
@@ -231,5 +231,9 @@ top: 200px;
   .methodology-arrow {
     left: 2rem;
     transform: none;
+  }
+
+  .step-content {
+    padding: var(--spacing-lg);
   }
 }

@@ -3,12 +3,13 @@
   /* Animación suave para todos los cambios */
   transition: var(--transition-normal);
   /* Fondo semi-transparente con efecto cristal */
-  background: var(--background-main, rgba(255, 255, 255, 0.8));
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: var(--glass-background);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   /* Sombra y borde sutiles */
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom: 1px solid var(--glass-border);
   /* Posicionamiento fijo en la parte superior */
   position: fixed;
   top: 0;
@@ -16,13 +17,14 @@
   right: 0;
   z-index: 1000;
   padding: var(--spacing-sm) 0;
+  transition: all 0.3s ease;
 }
 
 /* Estado al hacer scroll */
 .navbar-scrolled {
   /* Aumenta opacidad y modifica sombra */
-  background: var(--background-main, rgba(255, 255, 255, 0.9));
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  background: rgba(var(--primary-rgb), 0.05);
+  box-shadow: var(--shadow-md);
   border-color: rgba(255, 255, 255, 0.3);
 }
 
@@ -32,15 +34,21 @@
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent !important;
+  color: var(--primary-color);
   /* Tipografía y espaciado */
   font-size: 1.5rem;
-  font-weight: var(--font-weight-bold);
+  font-weight: 700;
   letter-spacing: -0.5px;
   /* Alineación con icono */
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
+  transition: var(--transition-normal);
+}
+
+.navbar-brand:hover {
+  color: var(--primary-dark);
+  transform: translateY(-2px);
 }
 
 .navbar-brand i {
@@ -57,11 +65,11 @@
 /* Enlaces de navegación */
 .nav-link {
   /* Estilos base */
-  font-weight: var(--font-weight-medium);
+  font-weight: 500;
   font-size: 1.1rem;
-  color: var(--text-dark) !important;
+  color: var(--text-dark);
   /* Espaciado y bordes */
-  padding: var(--spacing-sm) var(--spacing-md) !important;
+  padding: 0.5rem 1rem;
   margin: 0 var(--spacing-xs);
   border-radius: var(--border-radius-sm);
   /* Efectos visuales */
@@ -79,16 +87,16 @@
   left: 50%;
   transform: translateX(-50%);
   width: 0;
-  height: 3px;
+  height: 2px;
   background: var(--gradient-primary);
-  transition: width 0.3s ease;
+  transition: all 0.3s ease;
   border-radius: var(--border-radius-full);
 }
 
 .nav-link:hover,
 .nav-link.active {
   background: rgba(var(--primary-rgb), 0.1);
-  color: var(--primary-color) !important;
+  color: var(--primary-color);
   transform: translateY(-2px);
 }
 
@@ -116,13 +124,15 @@
 /* Botón hamburguesa para móvil */
 .navbar-toggler {
   border: none;
-  padding: var(--spacing-sm);
+  padding: 0.5rem;
   color: var(--primary-color);
+  transition: var(--transition-normal);
 }
 
 .navbar-toggler:focus {
-  box-shadow: var(--shadow-highlight);
-  outline: none;
+  box-shadow: none;
+  outline: 2px solid var(--primary-light);
+  outline-offset: 2px;
 }
 
 .navbar-toggler-icon {
@@ -130,13 +140,34 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  transition: var(--transition-normal);
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background: var(--primary-color);
+  transition: var(--transition-normal);
 }
 
 .navbar-toggler-icon::before {
-  content: '\F479';
-  font-family: 'bootstrap-icons';
-  font-size: 2rem;
-  color: var(--primary-color);
+  transform: translateY(-6px);
+}
+
+.navbar-toggler-icon::after {
+  transform: translateY(6px);
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+  transform: rotate(45deg);
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+  transform: rotate(-45deg);
 }
 
 /* Menú desplegable */
@@ -168,35 +199,37 @@
 @media (max-width: 991px) {
   /* Panel lateral en móvil */
   .navbar-collapse {
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(10px);
+    background: var(--glass-background);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
     /* Espaciado y sombras */
-    padding: var(--spacing-md);
-    border-radius: var(--border-radius-md);
+    padding: 1rem;
+    border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-lg);
-    margin-top: var(--spacing-sm);
+    margin-top: 0.5rem;
+    border: 1px solid var(--glass-border);
   }
 
   /* Ajustes de enlaces en móvil */
   .nav-link {
-    padding: var(--spacing-sm) var(--spacing-md) !important;
+    padding: 0.75rem 1rem;
     margin: var(--spacing-xs) 0;
   }
 
   /* Indicador vertical en móvil */
   .nav-link::after {
     bottom: auto;
-    top: 0;
+    top: 50%;
     height: 100%;
-    width: 3px;
+    width: 2px;
     left: 0;
-    transform: none;
+    transform: translateY(-50%);
   }
 
   .nav-link:hover::after,
   .nav-link.active::after {
-    width: 3px;
-    height: 100%;
+    width: 2px;
+    height: 80%;
   }
 
   .nav-link.active {
@@ -213,7 +246,7 @@
 
   /* Mantener solo el indicador para el estado activo */
   .nav-link.active::after {
-    width: 3px;
+    width: 2px;
     height: 100%;
   }
 }

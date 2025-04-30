@@ -1,4 +1,5 @@
 import { useTypewriter, Cursor } from 'react-simple-typewriter';
+import { UnderlineText } from '../ui/UnderlineText';
 
 export const Hero = () => {
   const [text] = useTypewriter({
@@ -35,7 +36,7 @@ export const Hero = () => {
               </span>
               <Cursor cursorStyle="_" />
             </h1>
-            <p className="lead mb-4 text-center">Innovando en la recuperación y sostenibilidad de suelos agrícolas</p>
+            <p className="lead mb-4 text-center">Innovando en la recuperación y <UnderlineText>sostenibilidad de suelos agrícolas</UnderlineText> </p>
             <div className="d-flex gap-3 justify-content-center">
               <a href="#proyecto" className="btn btn-primary btn-icon">
                 Conócenos <i className="bi bi-arrow-right"></i>

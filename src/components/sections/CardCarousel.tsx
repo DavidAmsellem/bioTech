@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState, useCallback } from 'react';
 import '../../styles/sections/craft-of-ui.css';
 import { FloatingIcons } from '../layout/FloatingIcons';
+import { UnderlineText } from '../ui/UnderlineText';
 
 
 // Componentes visuales
@@ -194,8 +195,8 @@ export const CardCarousel = () => {
        <FloatingIcons />
       <h1 className="headline">Proceso de Regeneración</h1>
       <p className="lead">
-        Descubre cómo transformamos suelos degradados en ecosistemas productivos 
-        mediante biotecnología avanzada y métodos sostenibles.
+        Descubre cómo  en ecosistemas productivos 
+        mediante <strong><UnderlineText>biotecnología avanzada</UnderlineText> y <UnderlineText>métodos sostenibles.</UnderlineText></strong>
       </p>
       <ul 
         className="card-grid"
