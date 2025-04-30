@@ -11,7 +11,7 @@ const sections = [
     subtitle: "Evaluación Detallada",
     text: "Realizamos un análisis exhaustivo del terreno utilizando tecnología avanzada y métodos biotecnológicos para determinar el estado actual del suelo.",
     color: "#1a2b3c",
-    image: "/images/analisis-suelo.jpg",
+    image: "/images/methodology-bg.png",
     details: [
       "Análisis de pH y nutrientes",
       "Evaluación de microorganismos",
@@ -43,7 +43,7 @@ const sections = [
     subtitle: "Identificación de Problemas",
     text: "Interpretamos los resultados para identificar las áreas que necesitan intervención y desarrollamos un plan de acción personalizado.",
     color: "#2c3e50",
-    image: "/images/diagnostico-biotec.jpg",
+    image: "/images/hero-bg.png",
     details: [
       "Mapeo de áreas críticas",
       "Evaluación de riesgos",
@@ -75,7 +75,7 @@ const sections = [
     subtitle: "Soluciones Naturales",
     text: "Aplicamos tratamientos específicos utilizando microorganismos y compuestos naturales para regenerar el suelo.",
     color: "#34495e",
-    image: "/images/tratamiento-bio.jpg",
+    image: "/images/tractor.jpg",
     details: [
       "Bioremediación natural",
       "Control biológico",
@@ -109,32 +109,32 @@ const sections = [
 
 export const ValenTime = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const sectionRefs = useRef<HTMLDivElement[]>([]);
+  const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const sections = gsap.utils.toArray('.valentime-section');
+    const sections = gsap.utils.toArray('.valentime-section') as Element[];
 
-    sections.forEach((section: any, i) => {
+    sections.forEach((section: Element) => {
       ScrollTrigger.create({
         trigger: section,
         start: 'top top',
         pin: true,
         pinSpacing: false,
-        scrub: 3, // Aumentado de 1 a 2 para hacer más lento el scrub
+        scrub: 3,
         snap: 1,
         onEnter: () => gsap.to(section, {
           opacity: 1,
           scale: 1,
-          duration: 2, // Aumentado de 0.5 a 1.5
-          ease: "power2.inOut" // Añadido ease para suavizar
+          duration: 2,
+          ease: "power2.inOut"
         }),
         onLeaveBack: () => gsap.to(section, {
           opacity: 1,
           scale: 0.95,
-          duration: 2, // Aumentado de 1 a 1.5
-          ease: "power2.inOut" // Añadido ease para suavizar
+          duration: 2,
+          ease: "power2.inOut"
         })
       });
     });
@@ -149,7 +149,9 @@ export const ValenTime = () => {
       {sections.map((section, index) => (
         <div 
           key={index}
-          ref={el => sectionRefs.current[index] = el as HTMLDivElement}
+          ref={(el) => {
+            sectionRefs.current[index] = el;
+          }}
           className="valentime-section"
           style={{ backgroundColor: section.color }}
         >

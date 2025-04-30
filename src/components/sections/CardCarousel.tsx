@@ -62,7 +62,7 @@ const ResultsVisual = () => (
 export const CardCarousel = () => {
   const listRef = useRef<HTMLUListElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const autoPlayRef = useRef<NodeJS.Timeout>();
+  const autoPlayRef = useRef<NodeJS.Timeout | undefined>(undefined);
   const autoPlayInterval = 3000; // 3 segundos entre cada cambio
 
   // Función para activar una tarjeta
