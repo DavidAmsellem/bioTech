@@ -15,6 +15,8 @@ import { HorizontalScroll } from './components/sections/HorizontalScroll'
 import { useState, useEffect } from 'react';
 import { LoadingScreen } from './components/layout/LoadingScreen';
 import { ValenTime } from './components/sections/ValenTime';
+import {CardCarousel} from './components/sections/CardCarousel';
+import { Waves } from './components/layout/Waves';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -52,8 +54,10 @@ function App() {
       <GrowingPlant />
       <main>
         <Hero />
+        <Waves />
         <ValenTime />
         <About />
+        <CardCarousel />
         <Methodology />
         <HorizontalScroll />
         <Results />

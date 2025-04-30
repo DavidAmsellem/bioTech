@@ -1,0 +1,450 @@
+/* craft-of-ui.css ----------------------------------------------------------
+   ¡Sin reglas en :root ni en body!  Las variables CSS viven dentro del
+   contenedor principal .craft-container para mantener el alcance local. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor principal */
+.craft-container {
+  --gap: 8px;
+  --base: clamp(2rem, 8cqi, 80px);
+  --speed: 0.6s;
+  --easing: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --article-width: 320px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 4rem 2rem;
+  font-family: system-ui, sans-serif;
+  background-color: var(--accent-light); /* Fondo sólido */
+  min-height: 100vh; /* Asegura que ocupe toda la altura */
+  position: relative; /* Para el z-index */
+  z-index: 1; /* Asegura que esté siempre presente */
+}
+
+.headline {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: var(--text-dark);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.lead {
+  max-width: 74ch;
+  line-height: 1.5;
+  opacity: 0.8;
+  text-align: center;
+  color: var(--text-medium);
+  margin-bottom: 3rem;
+}
+
+.card-grid {
+  list-style: none;
+  display: grid;
+  gap: var(--gap);
+  width: min(1200px, 100% - 4rem);
+  height: clamp(600px, 70vh, 800px); /* Aumentada la altura del grid */
+  grid-template-columns: repeat(4, 1fr);
+  transition: grid-template-columns 0.6s var(--easing);
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  min-height: 70vh; /* Aumentada la altura de las cards */
+  min-width: var(--base);
+  background-color: var(--background-card); /* Fondo sólido para las cards */
+  backdrop-filter: none; /* Eliminamos el blur */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Añadimos sombra */
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-visual {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.card-body {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(
+    to top,
+    var(--background-dark) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    transparent 100%
+  );
+  z-index: 2;
+}
+
+.card-title {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  transform-origin: 0 50%;
+  transform: rotate(90deg);
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--text-white);
+  opacity: 0.6;
+  transition: opacity var(--speed) var(--easing);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.card-copy {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  opacity: 0;
+  transition: opacity var(--speed) var(--easing);
+}
+
+.card-copy p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--text-white);
+  max-width: 30ch;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--primary-color);
+}
+
+.card-link {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--primary-color);
+  opacity: 0;
+  transition: opacity var(--speed) var(--easing);
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
+
+/* Estados activos */
+[data-active="true"] .card-bg {
+  filter: grayscale(0) brightness(0.8);
+  transform: scale(1);
+  transition-delay: calc(var(--speed) * 0.25);
+}
+
+[data-active="true"] .card-title {
+  opacity: 1;
+}
+
+[data-active="true"] .card-copy,
+[data-active="true"] .card-link {
+  opacity: 1;
+  transition-delay: calc(var(--speed) * 0.25);
+}
+
+/* Accesibilidad */
+.card:focus-within {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card-grid {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-height: 400px; /* Altura para móviles */
+  }
+
+  .card-title {
+    transform: none;
+    font-size: 1rem;
+  }
+
+  .card-copy {
+    opacity: 1;
+  }
+
+  .card-link {
+    opacity: 1;
+  }
+}
+
+/* Componentes visuales */
+.visual-component {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-card);
+  overflow: hidden;
+}
+
+/* Análisis */
+.analysis .layers {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.analysis .layer {
+  position: absolute;
+  width: 100%;
+  height: 33.33%;
+  transition: transform 0.6s var(--easing);
+}
+
+.analysis .layer-1 { 
+  top: 0;
+  background: var(--primary-light);
+  animation: slideLayer 3s ease-in-out infinite;
+}
+
+.analysis .layer-2 { 
+  top: 33.33%;
+  background: var(--secondary-light);
+  animation: slideLayer 3s ease-in-out infinite 0.5s;
+}
+
+.analysis .layer-3 { 
+  top: 66.66%;
+  background: var(--accent-light);
+  animation: slideLayer 3s ease-in-out infinite 1s;
+}
+
+.analysis .magnifying-glass {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  border: 8px solid var(--primary-color);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: examine 4s ease infinite;
+}
+
+.analysis .magnifying-glass::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  right: -15px;
+  width: 8px;
+  height: 30px;
+  background: var(--primary-color);
+  transform: rotate(45deg);
+}
+
+/* Tratamiento */
+.treatment .soil {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40%;
+  background: var(--primary-dark);
+}
+
+.treatment .plants {
+  position: absolute;
+  bottom: 40%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.treatment .plant {
+  width: 4px;
+  background: var(--primary-color);
+  transform-origin: bottom;
+  animation: grow 4s ease infinite;
+}
+
+.treatment .plant-1 { height: 80px; animation-delay: 0s; }
+.treatment .plant-2 { height: 100px; animation-delay: 0.5s; }
+.treatment .plant-3 { height: 60px; animation-delay: 1s; }
+
+.treatment .water-drops {
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  height: 60%;
+}
+
+.treatment .drop {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--primary-light);
+  border-radius: 50%;
+  animation: falling 2s ease infinite;
+}
+
+.treatment .drop-1 { left: 30%; animation-delay: 0s; }
+.treatment .drop-2 { left: 50%; animation-delay: 0.5s; }
+.treatment .drop-3 { left: 70%; animation-delay: 1s; }
+
+/* Monitoreo */
+.monitoring .graph {
+  position: absolute;
+  bottom: 20%;
+  width: 80%;
+  height: 60%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.monitoring .bar {
+  width: 40px;
+  background: var(--primary-color);
+  animation: growUp 3s ease infinite;
+}
+
+.monitoring .bar-1 { height: 60%; animation-delay: 0s; }
+.monitoring .bar-2 { height: 80%; animation-delay: 0.5s; }
+.monitoring .bar-3 { height: 100%; animation-delay: 1s; }
+
+.monitoring .data-points {
+  position: absolute;
+  top: 20%;
+  width: 80%;
+  height: 60%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.monitoring .point {
+  width: 12px;
+  height: 12px;
+  background: var(--secondary-color);
+  border-radius: 50%;
+  animation: pulse 2s ease infinite;
+}
+
+.monitoring .point-1 { animation-delay: 0s; }
+.monitoring .point-2 { animation-delay: 0.5s; }
+.monitoring .point-3 { animation-delay: 1s; }
+
+/* Resultados */
+.results .healthy-soil {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    var(--primary-light),
+    var(--primary-dark)
+  );
+}
+
+.results .tree {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 120px;
+  background: var(--primary-dark);
+}
+
+.results .leaves {
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  width: 100px;
+  height: 100px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  animation: sway 4s ease infinite;
+}
+
+.results .stats {
+  position: absolute;
+  top: 20%;
+  width: 80%;
+  left: 10%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.results .stat {
+  width: 80px;
+  height: 40px;
+  background: var(--primary-light);
+  border-radius: 20px;
+  animation: pulse 2s ease infinite;
+}
+
+.results .stat-1 { animation-delay: 0s; }
+.results .stat-2 { animation-delay: 0.5s; }
+
+/* Animaciones */
+@keyframes slideLayer {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+}
+
+@keyframes examine {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-30%, -50%) scale(1.2); }
+}
+
+@keyframes grow {
+  0% { transform: scaleY(0); }
+  100% { transform: scaleY(1); }
+}
+
+@keyframes falling {
+  0% { transform: translateY(-100%) scale(1); }
+  100% { transform: translateY(100%) scale(0); }
+}
+
+@keyframes growUp {
+  0% { transform: scaleY(0); }
+  100% { transform: scaleY(1); }
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 1; }
+}

@@ -1,0 +1,83 @@
+.waves-container {
+  position: relative;   /* Posición relativa para el contenedor de las olas */
+  width: 100%; 
+  background: transparent; /* Fondo transparente para el contenedor */
+  overflow: hidden;  /* Asegura que no haya desbordamiento */
+  color: var(--text-light);
+  margin-top: -19px; /* Ajuste para moverlo hacia arriba */
+  margin-bottom: -100px;
+  z-index: 2; /* Asegura que esté por encima del Hero */
+  rotate: 180deg; /* Rotación para un efecto visual diferente */
+}
+
+.waves-content {
+  height: 8vh; /* Reducida la altura del contenido */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.waves {
+  position: relative;
+  width: 100%;
+  height: 10vh; /* Reducida la altura de las olas */
+  margin-bottom: -7px;
+  min-height: 60px; /* Reducida la altura mínima */
+  max-height: 100px; /* Reducida la altura máxima */
+}
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+}
+
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px,0,0);
+  }
+  100% { 
+    transform: translate3d(85px,0,0);
+  }
+}
+
+/* Variables para los colores de las olas */
+:root {
+  --wave-color-1: #E8E8E8; /* Gris pastel muy claro */
+  --wave-color-2: #D3D3D3; /* Gris suave */
+  --wave-color-3: #B5D5C5; /* Verde pastel claro */
+  --wave-color-4: rgb(102, 102, 102); /* Mantiene el color de fondo para la última ola */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .waves {
+    height: 60px;
+    min-height: 30px;
+  }
+  .waves-content {
+    height: 10vh;
+  }
+}
