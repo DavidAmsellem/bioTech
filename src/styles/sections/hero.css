@@ -1,3 +1,10 @@
+/* Contenedor principal del hero
+   - Altura mínima del 85% del viewport
+   - Posicionamiento relativo para los elementos absolutos internos
+   - Flex para centrar contenido verticalmente
+   - Oculta cualquier desbordamiento de contenido
+   - Padding vertical extra grande
+   - Ajuste de -20px arriba para eliminar espacio con el navbar */
 .hero {
   min-height: 85vh;
   position: relative;
@@ -6,9 +13,14 @@
   overflow: hidden;
   padding: var(--spacing-2xl) 0;
   margin-bottom: 0;
-  top: -20px; /* Adjusted to remove the gap */
+  top: -20px;
 }
 
+/* Contenedor del video de fondo
+   - Cubre toda el área del hero
+   - z-index 0 para estar detrás del contenido
+   - Deshabilita interacción con el video
+   - Oculta desbordamiento del video */
 .video-background {
   position: absolute;
   top: 0;
@@ -20,17 +32,26 @@
   overflow: hidden;
 }
 
+/* iframe del video de fondo
+   - Dimensiones calculadas para mantener ratio 16:9
+   - Posicionamiento centrado absoluto
+   - Asegura cobertura completa del contenedor */
 .video-background iframe {
   width: 100vw;
-  height: 56.25vw; /* Given a 16:9 aspect ratio */
+  height: 56.25vw;
   min-height: 100vh;
-  min-width: 177.77vh; /* Given a 16:9 aspect ratio */
+  min-width: 177.77vh;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
+/* Capa de superposición oscura
+   - Gradiente diagonal para efecto de profundidad
+   - Combina negro y el color primario con transparencia
+   - Efecto de desenfoque sutil
+   - z-index 1 para estar sobre el video pero bajo el contenido */
 .overlay {
   position: absolute;
   top: 0;
@@ -46,30 +67,52 @@
   backdrop-filter: blur(2px);
 }
 
+/* Contenedor del contenido principal
+   - z-index 2 para estar sobre el video y el overlay */
 .hero .container {
   position: relative;
   z-index: 2;
 }
 
+/* Estilo del título principal
+   - Texto grueso y de gran tamaño
+   - Sombra para mejorar legibilidad
+   - Sangrado negativo para efecto visual
+   - Espaciado negativo entre letras para ajuste tipográfico */
 .hero h1 {
   color: var(--text-white);
-  font-weight: 800;
+  font-weight: 900;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
   line-height: 1.1;
   margin-bottom: var(--spacing-sm);
-  font-size: 2.75rem;
+  font-size: 4rem;
+  text-align: left;
+  margin-left: -3rem;
+  letter-spacing: -0.03em;
 }
 
+/* Estilo del subtítulo
+   - Tamaño y peso moderados
+   - Sombra sutil para legibilidad
+   - Ancho máximo para mejor legibilidad
+   - Hereda el sangrado del título */
 .hero .lead {
   color: var(--text-white);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
   opacity: 0.95;
-  max-width: 550px;
+  max-width: 600px;
   font-weight: 500;
+  text-align: center;
   margin: 0 auto var(--spacing-md);
 }
 
+/* Estilos base de los botones
+   - Margen superior para separación del texto
+   - Padding consistente
+   - Fuente semi-negrita
+   - Efecto de desenfoque en el fondo
+   - Transición suave para hover */
 .hero .btn {
   margin-top: var(--spacing-lg);
   padding: var(--spacing-sm) var(--spacing-lg);
@@ -79,55 +122,111 @@
   transition: all 0.3s ease;
 }
 
+/* Botón primario
+   - Fondo semi-transparente del color principal
+   - Sin borde
+   - Sombra suave */
 .hero .btn-primary {
   background: rgba(76, 175, 80, 0.9);
   border: none;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* Hover del botón primario
+   - Color sólido
+   - Elevación sutil
+   - Sombra más pronunciada */
 .hero .btn-primary:hover {
   background: var(--primary-color);
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
+/* Botón outline
+   - Borde blanco
+   - Fondo semi-transparente
+   - Texto blanco */
 .hero .btn-outline-primary {
   border: 2px solid var(--text-white);
   color: var(--text-white);
   background: rgba(255, 255, 255, 0.1);
 }
 
+/* Hover del botón outline
+   - Fondo blanco
+   - Texto del color primario
+   - Misma elevación que el botón primario */
 .hero .btn-outline-primary:hover {
   background: var(--text-white);
   color: var(--primary-color);
   transform: translateY(-2px) scale(1.05);
 }
 
+/* Ícono del botón
+   - Transición suave */
 .hero .btn-icon i {
   transition: transform 0.3s ease;
 }
 
+/* Hover del ícono
+   - Desplazamiento horizontal */
 .hero .btn-icon:hover i {
   transform: translateX(5px);
 }
 
+/* Ajustes responsive para tablets
+   - Altura reducida
+   - Tamaños de fuente más pequeños
+   - Sangrado reducido */
 @media (max-width: 768px) {
   .hero {
     min-height: 50vh;
     padding: var(--spacing-lg) 0;
-    text-align: center;
+  }
+
+  .hero-content {
+    margin-left: -1.5rem;
   }
 
   .hero h1 {
-    font-size: 2rem;
+    font-size: 2.75rem;
   }
 
   .hero .lead {
-    font-size: 1rem;
-    margin: 0 auto var(--spacing-md);
+    font-size: 1.1rem;
   }
 
   .hero .d-flex {
-    justify-content: center;
+    margin-left: -1.5rem;
+    justify-content: flex-start;
   }
+}
+
+/* Ajustes responsive para móviles
+   - Fuentes aún más pequeñas
+   - Sangrado mínimo */
+@media (max-width: 576px) {
+  .hero-content {
+    margin-left: -1rem;
+  }
+
+  .hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .hero .lead {
+    margin-left: -1rem;
+  }
+
+  .hero .d-flex {
+    margin-left: -1rem;
+  }
+}
+
+.hero .d-flex {
+  margin-left: -3rem;
+}
+
+.hero-content {
+  margin-left: -3rem;
 }

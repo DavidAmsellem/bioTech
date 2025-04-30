@@ -10,20 +10,21 @@ import { Team } from './components/sections/Team'
 import { Contact } from './components/sections/Contact'
 import { Analytics } from './components/analytics/Analytics'
 import { ThemeProvider } from './context/ThemeContext'
+import { CookieProvider } from './context/CookieContext'
 import { GrowingPlant } from './components/layout/GrowingPlant'
 import { HorizontalScroll } from './components/sections/HorizontalScroll'
 import { useState, useEffect } from 'react';
 import { LoadingScreen } from './components/layout/LoadingScreen';
 import { ValenTime } from './components/sections/ValenTime';
-import {CardCarousel} from './components/sections/CardCarousel';
+import { CardCarousel } from './components/sections/CardCarousel';
 import { Waves } from './components/layout/Waves';
+import { CookieBanner } from './components/ui/CookieBanner';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time and ensure minimum loading display
-    const minLoadingTime = 2000; // 2 seconds minimum
+    const minLoadingTime = 2000;
     const loadStartTime = Date.now();
 
     window.onload = () => {
@@ -35,7 +36,6 @@ function App() {
       }, remainingTime);
     };
 
-    // Fallback in case window.onload doesn't trigger
     const fallbackTimer = setTimeout(() => {
       setIsLoading(false);
     }, 3000);
@@ -49,22 +49,25 @@ function App() {
 
   return (
     <ThemeProvider>
-      <Analytics />
-      <Navbar />
-      <GrowingPlant />
-      <main>
-        <Hero />
-        <Waves />
-        <ValenTime />
-        <About />
-        <CardCarousel />
-        <Methodology />
-        <HorizontalScroll />
-        <Results />
-        <Team />
-        <Contact />
-      </main>
-      <Footer />
+      <CookieProvider>
+        <Analytics />
+        <Navbar />
+        <GrowingPlant />
+        <main>
+          <Hero />
+          <Waves />
+          <ValenTime />
+          <About />
+          <CardCarousel />
+          <Methodology />
+          <HorizontalScroll />
+          <Results />
+          <Team />
+          <Contact />
+        </main>
+        <Footer />
+        <CookieBanner />
+      </CookieProvider>
     </ThemeProvider>
   );
 }

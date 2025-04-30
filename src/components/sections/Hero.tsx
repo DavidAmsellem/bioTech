@@ -1,6 +1,5 @@
 import { useTypewriter, Cursor } from 'react-simple-typewriter';
 
-
 export const Hero = () => {
   const [text] = useTypewriter({
     words: [
@@ -27,16 +26,16 @@ export const Hero = () => {
       </div>
       <div className="overlay"></div>
       <div className="container">
-        <div className="row align-items-center justify-content-center">
+        <div className="row justify-content-center">
           <div className="col-lg-8 text-center" data-aos="fade-up">
-            <h1 className="mb-3">
+            <h1 className="mb-3 text-center">
               Proyecto de{' '}
               <span style={{ fontWeight: 700, color: 'var(--text-dark)' }}>
                 {text}
               </span>
               <Cursor cursorStyle="_" />
             </h1>
-            <p className="lead mb-4">Innovando en la recuperación y sostenibilidad de suelos agrícolas</p>
+            <p className="lead mb-4 text-center">Innovando en la recuperación y sostenibilidad de suelos agrícolas</p>
             <div className="d-flex gap-3 justify-content-center">
               <a href="#proyecto" className="btn btn-primary btn-icon">
                 Conócenos <i className="bi bi-arrow-right"></i>

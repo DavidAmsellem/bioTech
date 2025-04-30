@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useCookies } from '../../context/CookieContext';
 
 type GTagEvent = {
   action: string;
@@ -24,7 +25,11 @@ declare global {
 }
 
 export const Analytics = () => {
+  const { preferences } = useCookies();
+
   useEffect(() => {
+    if (!preferences.analytics) return;
+
     // Inicializar dataLayer
     window.dataLayer = window.dataLayer || [];
     window.gtag = function(...args: GTagArguments) { 
@@ -79,7 +84,7 @@ export const Analytics = () => {
       window.removeEventListener('scroll', trackScroll);
       document.removeEventListener('click', trackClicks);
     };
-  }, []);
+  }, [preferences.analytics]);
 
   return null;
 };
