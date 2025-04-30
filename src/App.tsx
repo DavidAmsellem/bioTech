@@ -19,6 +19,7 @@ import { ValenTime } from './components/sections/ValenTime';
 import { CardCarousel } from './components/sections/CardCarousel';
 import { Waves } from './components/layout/Waves';
 import { CookieBanner } from './components/ui/CookieBanner';
+import { Blog } from './components/sections/Blog';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -63,6 +64,7 @@ function App() {
           <HorizontalScroll />
           <Results />
           <Team />
+          <Blog />
           <Contact />
         </main>
         <Footer />
